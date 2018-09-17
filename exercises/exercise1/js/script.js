@@ -25,6 +25,11 @@ var ghostImage;
 var ghostImageX;
 var ghostImageY;
 
+// The image of an emoji
+var emojiImage;
+// The current position of the emoji
+var emojiImageX;
+var emojiImageY;
 
 // preload()
 //
@@ -34,6 +39,7 @@ function preload() {
   clownImage = loadImage("assets/images/clown.png");
   feltTextureImage = loadImage("assets/images/black-felt-texture.png");
   ghostImage = loadImage("assets/images/ghost.png");
+  emojiImage = loadImage("assets/images/emoji.png");
 }
 
 
@@ -84,12 +90,24 @@ function draw() {
   // Move the clown by moving it 1/10th of its current distance from the mouse
 
   // Calculate the distance in X and in Y
-  var xDistance = mouseX - clownImageX;
-  var yDistance = mouseY - clownImageY;
+  var xDistanceClown = mouseX - clownImageX;
+  var yDistanceClown = mouseY - clownImageY;
   // Add 1/10th of the x and y distance to the clown's current (x,y) location
-  clownImageX = clownImageX + xDistance/10;
-  clownImageY = clownImageY + yDistance/10;
+  clownImageX = clownImageX + xDistanceClown/10;
+  clownImageY = clownImageY + yDistanceClown/10;
 
   // Display the clown image
   image(clownImage,clownImageX,clownImageY);
+
+  // Move the emoji by moving it so it is always displayed at the current mouse location
+
+  // Calculate the distance in X and in Y
+  var xDistanceEmoji = mouseX;
+  var yDistanceEmoji = mouseY;
+  // Add the x and y distance to the clown's current (x,y) location
+  emojiImageX = xDistanceEmoji;
+  emojiImageY = yDistanceEmoji;
+
+  // Display the emoji
+  image(emojiImage,emojiImageX,emojiImageY);
 }
