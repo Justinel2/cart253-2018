@@ -19,6 +19,12 @@ var feltTextureImage;
 var feltTextureImageX;
 var feltTextureImageY;
 
+// The image of a Pacman ghost
+var ghostImage;
+// The current position of the ghost
+var ghostImageX;
+var ghostImageY;
+
 
 // preload()
 //
@@ -27,6 +33,7 @@ var feltTextureImageY;
 function preload() {
   clownImage = loadImage("assets/images/clown.png");
   feltTextureImage = loadImage("assets/images/black-felt-texture.png");
+  ghostImage = loadImage("assets/images/ghost.png");
 }
 
 
@@ -46,6 +53,10 @@ function setup() {
   feltTextureImageX = width/2;
   feltTextureImageY = 0 - feltTextureImage.height/2;
 
+  // Start the ghost image at the left side of the canvas
+  ghostImageX = 0;
+  ghostImageY = height/2;
+
   // We'll use imageMode CENTER for this script
   imageMode(CENTER);
 }
@@ -57,6 +68,12 @@ function setup() {
 // Moves the clown face toward the current mouse location
 
 function draw() {
+
+  // Move the ghost image to the right by increasing its x position
+  ghostImageX += 1;
+
+  // Display the ghost image
+  image(ghostImage,ghostImageX,ghostImageY);
 
   // Move the felt image down by increasing its y position
   feltTextureImageY += 1;
