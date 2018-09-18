@@ -31,6 +31,12 @@ var emojiImage;
 var emojiImageX;
 var emojiImageY;
 
+// The image of a flower
+var flowerImage;
+// The current position of the emoji
+var flowerImageX;
+var flowerImageY;
+
 // preload()
 //
 // Load the two images we're using before the program starts
@@ -40,6 +46,7 @@ function preload() {
   feltTextureImage = loadImage("assets/images/black-felt-texture.png");
   ghostImage = loadImage("assets/images/ghost.png");
   emojiImage = loadImage("assets/images/emoji.png");
+  flowerImage = loadImage("assets/images/flower.png");
 }
 
 
@@ -110,4 +117,16 @@ function draw() {
 
   // Display the emoji
   image(emojiImage,emojiImageX,emojiImageY);
+
+  // Move the flower by moving it 1/5th of its current distance from the mouse
+
+  // Calculate the distance in X and in Y
+  var xDistanceFlower = mouseX - flowerImageX;
+  var yDistanceFlower = mouseY - flowerImageY;
+  // Add 1/5 of the x and y distance to the flower's current (x,y) location
+  flowerImageX = flowerImageX + xDistanceFlower/5;
+  flowerImageY = flowerImageY + yDistanceFlower/5;
+
+  // Display the flower image
+  image(flowerImage,flowerImageX,flowerImageY);
 }
