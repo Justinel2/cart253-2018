@@ -1,7 +1,7 @@
 /*********************************************************
 Exercise 2 - The Artful Dodger
-Pippin Barr
-Starter code for exercise 2.
+by Justine Lardeux (40030920)
+Starter code for exercise 2 by Pippin Barr.
 *********************************************************/
 
 // The position and size of our avatar circle
@@ -30,12 +30,29 @@ var enemySpeedIncrease = 0.5;
 // How many dodges the player has made
 var dodges = 0;
 
+// The font used to display the number of dodges
+var myFont;
+// The text that displays the number of successful dodges
+var typedText;
+
+function preload() {
+  myFont = loadFont('assets/fonts/Asset-Regular.ttf');
+}
+
 // setup()
 //
 // Make the canvas, position the avatar and anemy
 function setup() {
   // Create our playing area
   createCanvas(500,500);
+
+  // Adjust the text design
+  // Adjust the text size (number of dodges)
+  textSize(200);
+  // Adjust the text alignement (number of dodges)
+  textAlign(CENTER,CENTER);
+  // Adjust the font
+  textFont(myFont);
 
   // Put the avatar in the centre
   avatarX = width/2;
@@ -138,6 +155,9 @@ function draw() {
 
   // Display the current number of successful in the console
   console.log(dodges);
+  // Display the number of successful dodges on the screen
+  typedText = dodges;
+  text(typedText,height/2,width/2.5);
 
   // The player is black
   fill(0);
