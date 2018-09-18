@@ -4,6 +4,8 @@ by Justine Lardeux (40030920)
 Starter code for exercise 2 by Pippin Barr.
 *********************************************************/
 
+// The image of a shy emoji (the avatar)
+var avatar;
 // The position and size of our avatar circle
 var avatarX;
 var avatarY;
@@ -14,6 +16,8 @@ var avatarSpeed = 10;
 var avatarVX = 0;
 var avatarVY = 0;
 
+// The image of a basketball (the enemy)
+var enemy;
 // The position and size of the enemy circle
 var enemyX;
 var enemyY;
@@ -27,6 +31,13 @@ var enemyVX = 5;
 // How much bigger the enemy circle gets with each successful dodge
 var enemySpeedIncrease = 0.5;
 
+// The image of a helmet (an advantage)
+var helmet;
+// The position and size of the enemy circle
+var helmetX;
+var helmetY;
+var enemySize = 50;
+
 // How many dodges the player has made
 var dodges = 0;
 
@@ -37,6 +48,8 @@ var typedText;
 
 function preload() {
   myFont = loadFont('assets/fonts/Asset-Regular.ttf');
+  enemy = loadImage("assets/images/basketball.png");
+  avatar = loadImage("assets/images/shy.gif_c200");
 }
 
 // setup()
@@ -58,6 +71,8 @@ function setup() {
   avatarX = width/2;
   avatarY = height/2;
 
+  // Set the default size of the basketball image
+
   // Put the enemy to the left at a random y coordinate within the canvas
   enemyX = 0;
   enemyY = random(0,height);
@@ -71,8 +86,8 @@ function setup() {
 // Handle moving the avatar and enemy and checking for dodges and
 // game over situations.
 function draw() {
-  // A pink background
-  background(255,220,220);
+  // A yellow background
+  background(250,250,250);
 
   // Default the avatar's velocity to 0 in case no key is pressed this frame
   avatarVX = 0;
@@ -158,15 +173,12 @@ function draw() {
   // Display the number of successful dodges on the screen
   typedText = dodges;
   text(typedText,height/2,width/2.5);
+  fill(255, 204, 0);
 
-  // The player is black
-  fill(0);
-  // Draw the player as a circle
-  ellipse(avatarX,avatarY,avatarSize,avatarSize);
+  // Display the emoji image
+  image(avatar,avatarX,avatarY,avatarSize,avatarSize);
 
-  // The enemy is red
-  fill(255,0,0);
-  // Draw the enemy as a circle
-  ellipse(enemyX,enemyY,enemySize,enemySize);
+  // Display the basketball image
+  image(enemy,enemyX,enemyY,enemySize,enemySize);
 
 }
