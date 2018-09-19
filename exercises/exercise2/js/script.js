@@ -15,6 +15,9 @@ var avatarSize = 50;
 var avatarSpeed = 10;
 var avatarVX = 0;
 var avatarVY = 0;
+// How much the size varies at each dodge
+var avatarSizeVariation;
+
 
 // The image of a basketball (the enemy)
 var enemy;
@@ -166,6 +169,10 @@ function draw() {
     dodges = dodges + 1;
     // Tell them how many dodges they have made
     console.log(dodges + " DODGES!");
+    // Randomize the size of the avatar
+    avatarSize = random(0,200);
+    // Randomize the speed of the avatar
+    avatarSpeed = random(0,50);
     // Reset the enemy's position to the left at a random height
     enemyX = 0;
     enemyY = random(0,height);
@@ -180,7 +187,6 @@ function draw() {
   typedText = dodges;
   text(typedText,height/2,width/2.5);
   fill(255, 204, 0);
-  filter(BLUR,3);
 
   // Display the emoji image
   image(avatar,avatarX,avatarY,avatarSize,avatarSize);
