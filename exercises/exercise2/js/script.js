@@ -23,7 +23,7 @@ var enemyX;
 var enemyY;
 var enemySize = 50;
 // How much bigger the enemy circle gets with each successful dodge
-var enemySizeIncrease = 5;
+var enemySizeIncrease = 10;
 
 // The speed and velocity of our enemy circle
 var enemySpeed = 5;
@@ -36,7 +36,7 @@ var helmet;
 // The position and size of the enemy circle
 var helmetX;
 var helmetY;
-var enemySize = 50;
+var helmetSize = 50;
 
 // How many dodges the player has made
 var dodges = 0;
@@ -47,9 +47,11 @@ var myFont;
 var typedText;
 
 function preload() {
+  //Load the different images from directory
   myFont = loadFont('assets/fonts/Asset-Regular.ttf');
   enemy = loadImage("assets/images/basketball.png");
   avatar = loadImage("assets/images/shy.gif_c200");
+  helmet = loadImage("assets/images/helmet.png");
 }
 
 // setup()
@@ -76,6 +78,10 @@ function setup() {
   // Put the enemy to the left at a random y coordinate within the canvas
   enemyX = 0;
   enemyY = random(0,height);
+
+  // Put the helmet at a random x and y coordinate with the canvas
+  helmetX = random(0,width);
+  helmetY = random(0,height);
 
   // No stroke so it looks cleaner
   noStroke();
@@ -174,6 +180,7 @@ function draw() {
   typedText = dodges;
   text(typedText,height/2,width/2.5);
   fill(255, 204, 0);
+  filter(BLUR,3);
 
   // Display the emoji image
   image(avatar,avatarX,avatarY,avatarSize,avatarSize);
@@ -181,4 +188,25 @@ function draw() {
   // Display the basketball image
   image(enemy,enemyX,enemyY,enemySize,enemySize);
 
+  // Display the helmet image
+  image(helmet,helmetX,helmetY,helmetSize,helmetSize);
+
+}
+
+// mouseClicked()
+//
+// When the mouse is clicked, check if it was on the helmet
+// if it was then give an advantage -> reset the size and speed
+function mouseClicked() {
+  // Check if the distance between the mouse and the centre of the helmet is less than the circle's radius
+  if (dist(mouseX,mouseY,helmetX,helmetY) < helmetSize/2) {
+    // Tell the player they got the advantage
+    console.log("YOU'VE GOT AN HELMET!");
+    // Reset the enemy's size and speed
+    enemySize = 50;
+    enemySpeed = 5;
+    // Reset the location of the helmet randomly
+    helmetX = random(0,width);
+    helmetY = random(0,height);
+  }
 }
