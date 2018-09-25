@@ -34,9 +34,11 @@ var numDecoys = 100;
 // Keep track of whether they've won
 var gameOver = false;
 
-// The width and height of the rectangle
+// The width, height and postion of the rectangle
 var rectWidth;
 var rectHeight;
+var rectX;
+var rectY;
 
 // The width and position of the target image as an example
 var targetExampleWidth;
@@ -115,6 +117,13 @@ function setup() {
   // Once we've displayed all decoys, we choose a location for the target
   targetX = random(0,width);
   targetY = random(0,height);
+
+  // Change position so the target can never be positioned underneath the rectangle
+while (targetX >= rectX*2 && targetY <= rectY*2){
+  targetX = random(0,widht);
+  targetY = random(0,height);
+}
+
   // And draw it (this means it will always be on top)
   image(targetImage,targetX,targetY);
 
@@ -124,12 +133,14 @@ function setup() {
   noStroke();
   rectWidth = windowWidth/4;
   rectHeight = windowHeight/5;
-  rect(windowWidth-rectWidth/2,rectHeight/2,rectWidth,rectHeight);
+  rectX = windowWidth-rectWidth/2;
+  rectY = rectHeight/2
+  rect(rectX,rectY,rectWidth,rectHeight);
 
   // Display the target image in the center of the rectangle as an example
   imageMode(CENTER);
   targetExampleWidth = rectWidth/2;
-  image(targetImage,windowWidth-rectWidth/2,rectHeight/1.8,targetExampleWidth);
+  image(targetImage,rectX,rectY+18,targetExampleWidth);
 
   // Prepare our typography for the target example - CAPTION
   textFont("Helvetica");
@@ -139,7 +150,7 @@ function setup() {
   noStroke();
   fill(45,61,66);
   // Tell them they won!
-  text("Where is that dog?",windowWidth-rectWidth/2,rectHeight/7);
+  text("Where is that dog?",rectX,rectY/4);
 }
 
 function draw() {
