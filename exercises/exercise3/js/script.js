@@ -34,6 +34,15 @@ var numDecoys = 100;
 // Keep track of whether they've won
 var gameOver = false;
 
+// The width and height of the rectangle
+var rectWidth;
+var rectHeight;
+
+// The width and position of the target image as an example
+var targetExampleWidth;
+var targetExampleHeight;
+var rectExampleX;
+
 // preload()
 //
 // Loads the target and decoy images before the program starts
@@ -108,6 +117,19 @@ function setup() {
   targetY = random(0,height);
   // And draw it (this means it will always be on top)
   image(targetImage,targetX,targetY);
+
+  // Create a rectangle where the image of the target is shown
+  rectMode(CENTER);
+  fill(242,89,86);
+  noStroke();
+  rectWidth = windowWidth/4;
+  rectHeight = windowHeight/5;
+  rect(windowWidth-rectWidth/2,rectHeight/2,rectWidth,rectHeight);
+
+  // Display the target image in the center of the rectangle as an example
+  imageMode(CENTER);
+  targetExampleWidth = rectWidth/2;
+  image(targetImage,windowWidth-rectWidth/2,rectHeight/2,targetExampleWidth);
 }
 
 function draw() {
