@@ -191,8 +191,7 @@ function draw() {
       targetY += vy;
 
       // Draw the target with random animation and size
-      image(targetImage,targetWidth,targetHeight,targetX,targetY);
-      console.log(targetWidth,targetHeight,targetX,targetY)
+      image(targetImage,targetX,targetY,targetWidth,targetHeight);
     }
   }
 }
