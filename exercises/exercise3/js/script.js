@@ -1,6 +1,8 @@
 /******************************************************************************
 Where's Sausage Dog?
 by Pippin Barr
+Modified by Justine Lardeux
+40030920
 
 An algorithmic version of a Where's Wally searching game where you
 need to click on the sausage dog you're searching for in amongst all
@@ -82,43 +84,46 @@ function setup() {
 
   // Use a for loop to draw as many decoys as we need
   for (var i = 0; i < numDecoys; i++) {
-    // Choose a random location for this decoy
+    // Choose a random location and size for this decoy
     var x = random(0,width);
     var y = random(0,height);
+    var decoyWidth = random(windowWidth/50,windowWidth/6);
+    var decoyHeight = random(windowHeight/50,windowHeight/6);
+
     // Generate a random number we can use for probability
     var r = random();
     // Use the random number to display one of the ten decoy
     // images, each with a 10% chance of being shown
     // We'll talk more about this nice quality of random soon enough
     if (r < 0.1) {
-      image(decoyImage1,x,y);
+      image(decoyImage1,x,y,decoyWidth,decoyHeight);
     }
     else if (r < 0.2) {
-      image(decoyImage2,x,y);
+      image(decoyImage2,x,y,decoyWidth,decoyHeight);
     }
     else if (r < 0.3) {
-      image(decoyImage3,x,y);
+      image(decoyImage3,x,y,decoyWidth,decoyHeight);
     }
     else if (r < 0.4) {
-      image(decoyImage4,x,y);
+      image(decoyImage4,x,y,decoyWidth,decoyHeight);
     }
     else if (r < 0.5) {
-      image(decoyImage5,x,y);
+      image(decoyImage5,x,y,decoyWidth,decoyHeight);
     }
     else if (r < 0.6) {
-      image(decoyImage6,x,y);
+      image(decoyImage6,x,y,decoyWidth,decoyHeight);
     }
     else if (r < 0.7) {
-      image(decoyImage7,x,y);
+      image(decoyImage7,x,y,decoyWidth,decoyHeight);
     }
     else if (r < 0.8) {
-      image(decoyImage8,x,y);
+      image(decoyImage8,x,y,decoyWidth,decoyHeight);
     }
     else if (r < 0.9) {
-      image(decoyImage9,x,y);
+      image(decoyImage9,x,y),decoyWidth,decoyHeight;
     }
     else if (r < 1.0) {
-      image(decoyImage10,x,y);
+      image(decoyImage10,x,y,decoyWidth,decoyHeight);
     }
   }
 
@@ -138,7 +143,7 @@ while (targetX >= rectX*2 && targetY <= rectY*2){
 }
 
   // And draw it (this means it will always be on top)
-  image(targetImage,targetX,targetY);
+  image(targetImage,targetX,targetY,decoyWidth,decoyHeight);
 
   // Create a rectangle where the image of the target is shown
   rectMode(CENTER);
@@ -192,6 +197,12 @@ function draw() {
 
       // Draw the target with random animation and size
       image(targetImage,targetX,targetY,targetWidth,targetHeight);
+    }
+    // Display the instruction to start the game again
+    else {
+      textSize(56);
+      fill(255,0,0);
+      text("PLEASE REFRESH TO PLAY AGAIN",width/2,height/1.5);
     }
   }
 }
