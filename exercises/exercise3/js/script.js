@@ -129,7 +129,17 @@ function setup() {
   // Display the target image in the center of the rectangle as an example
   imageMode(CENTER);
   targetExampleWidth = rectWidth/2;
-  image(targetImage,windowWidth-rectWidth/2,rectHeight/2,targetExampleWidth);
+  image(targetImage,windowWidth-rectWidth/2,rectHeight/1.8,targetExampleWidth);
+
+  // Prepare our typography for the target example - CAPTION
+  textFont("Helvetica");
+  textStyle(BOLD);
+  textSize(18);
+  textAlign(CENTER,CENTER);
+  noStroke();
+  fill(45,61,66);
+  // Tell them they won!
+  text("Where is that dog?",windowWidth-rectWidth/2,rectHeight/7);
 }
 
 function draw() {
