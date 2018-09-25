@@ -15,6 +15,14 @@ var targetX;
 var targetY;
 var targetImage;
 
+// Variables for the movements and size of the sausage dog when found
+var vx;
+var vy;
+var speedChange = 1;
+var maxSpeed = 4;
+var targetHeight = 0;
+var targetWidth = 0;
+
 // The ten decoy images
 var decoyImage1;
 var decoyImage2;
@@ -118,6 +126,11 @@ function setup() {
   targetX = random(0,width);
   targetY = random(0,height);
 
+
+  // Set up the velocity of the target to 0
+  vx = 0;
+  vy = 0;
+
   // Change position so the target can never be positioned underneath the rectangle
 while (targetX >= rectX*2 && targetY <= rectY*2){
   targetX = random(0,widht);
@@ -164,10 +177,23 @@ function draw() {
     // Tell them they won!
     text("YOU WINNED!",width/2,height/2);
 
-    noFill();
-    stroke(random(255));
-    strokeWeight(10);
-    ellipse(targetX,targetY,targetImage.width,targetImage.height);
+    // Modify the location and the size of the target randomly
+    if((targetX > 0 && targetY > 0) && (targetX < windowWidth && targetY < windowHeight)) {
+
+      // Change the size of the target randomly
+      targetHeight = random(windowHeight/10,windowHeight/4);
+      targetWidth = random(windowWidth/10,windowWidth/4);
+
+      // Move the sausage dog across the screen randomly and stops when out of it
+      vx += random(-speedChange,speedChange);
+      vy += random(-speedChange,speedChange);
+      targetX += vx;
+      targetY += vy;
+
+      // Draw the target with random animation and size
+      image(targetImage,targetWidth,targetHeight,targetX,targetY);
+      console.log(targetWidth,targetHeight,targetX,targetY)
+    }
   }
 }
 
