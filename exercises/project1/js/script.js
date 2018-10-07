@@ -182,6 +182,7 @@ function checkEating() {
     // Reduce the prey health
     preyHealth = constrain(preyHealth - eatHealth,0,preyMaxHealth);
 
+
     // Check if the prey died
     if (preyHealth === 0) {
       // Move the "new" prey to a random position
