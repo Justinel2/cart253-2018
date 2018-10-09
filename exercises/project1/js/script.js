@@ -44,6 +44,9 @@ var eatHealth = 10;
 // Number of prey eaten during the game
 var preyEaten = 0;
 
+var tx = 0;
+var ty = 0;
+
 // setup()
 //
 // Sets up the basic elements of the game
@@ -182,7 +185,6 @@ function checkEating() {
     // Reduce the prey health
     preyHealth = constrain(preyHealth - eatHealth,0,preyMaxHealth);
 
-
     // Check if the prey died
     if (preyHealth === 0) {
       // Move the "new" prey to a random position
@@ -203,18 +205,19 @@ function movePrey() {
   // Change the prey's velocity at random intervals
   // random() will be < 0.05 5% of the time, so the prey
   // will change direction on 5% of frames
-  if (random() < 0.05) {
+
     // Set velocity based on random values to get a new direction
     // and speed of movement
     // Use map() to convert from the 0-1 range of the random() function
     // to the appropriate range of velocities for the prey
-    preyVX = map(random(),0,1,-preyMaxSpeed,preyMaxSpeed);
-    preyVY = map(random(),0,1,-preyMaxSpeed,preyMaxSpeed);
-  }
+  preyVX = map(noise(tx),0,1,-preyMaxSpeed,preyMaxSpeed);
+  preyVY = map(noise(ty),0,1,-preyMaxSpeed,preyMaxSpeed);
 
   // Update prey position based on velocity
   preyX += preyVX;
   preyY += preyVY;
+  tx += 0.01;
+  ty += 0.21;
 
   // Screen wrapping
   if (preyX < 0) {
