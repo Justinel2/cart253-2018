@@ -19,7 +19,8 @@ var playerY;
 var playerRadius = 25;
 var playerVX = 0;
 var playerVY = 0;
-var playerMaxSpeed = 2;
+var playerRegSpeed = 2;
+var playerAcceleration = 2;
 // Player health
 var playerHealth;
 var playerMaxHealth = 255;
@@ -43,6 +44,8 @@ var preyFill = 200;
 var eatHealth = 10;
 // Number of prey eaten during the game
 var preyEaten = 0;
+
+
 
 var tx = 0;
 var ty = 0;
@@ -112,10 +115,10 @@ function draw() {
 function handleInput() {
   // Check for horizontal movement
   if (keyIsDown(LEFT_ARROW)) {
-    playerVX = -playerMaxSpeed;
+    playerVX = -playerRegSpeed;
   }
   else if (keyIsDown(RIGHT_ARROW)) {
-    playerVX = playerMaxSpeed;
+    playerVX = playerRegSpeed;
   }
   else {
     playerVX = 0;
@@ -123,13 +126,21 @@ function handleInput() {
 
   // Check for vertical movement
   if (keyIsDown(UP_ARROW)) {
-    playerVY = -playerMaxSpeed;
+    playerVY = -playerRegSpeed;
   }
   else if (keyIsDown(DOWN_ARROW)) {
-    playerVY = playerMaxSpeed;
+    playerVY = playerRegSpeed;
   }
   else {
     playerVY = 0;
+  }
+
+  // Accelerate the speed (2 times more) when the space key is down
+  // Make the player lose health faster (2 times faster)
+  if (keyIsDown(32)) {
+    playerVY *= playerAcceleration;
+    playerVX *= playerAcceleration;
+    playerHealth = constrain(playerHealth - 1,0,playerMaxHealth);
   }
 }
 
