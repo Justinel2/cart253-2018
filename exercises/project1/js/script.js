@@ -52,8 +52,11 @@ var preyEaten = 0;
 var tx = 0;
 var ty = 0;
 
-// Background image
-var img;
+// images
+var bg; // bg
+var proto; //player
+var bacteria //prey
+
 
 // Levels and life
 var level = 1;
@@ -63,6 +66,8 @@ var level = 1;
 // Preload assets for the game
 function preload() {
   bg = loadImage('assets/images/P1_bg.png');
+  proto = loadImage('assets/images/P1_proto.png');
+  bacteria = loadImage('assets/images/P1_bacteria.png');
 }
 
 // setup()
@@ -223,7 +228,7 @@ function checkEating() {
       // Track how many prey were eaten
       preyEaten++;
       // Go up one level everytime three prey have died
-      if (preyEaten % 2 === 0 && preyEaten != 0) {
+      if (preyEaten % 3 === 0 && preyEaten != 0) {
         level++
         // Check if the health of the player is more than 100
         if (playerHealth > 100) {
@@ -277,16 +282,14 @@ function movePrey() {
 //
 // Draw the prey as an ellipse with alpha based on health
 function drawPrey() {
-  fill(preyFill,preyHealth);
-  ellipse(preyX,preyY,preyRadius*2);
+  image(bacteria,preyX,preyY,180,200);
 }
 
 // drawPlayer()
 //
 // Draw the player as an ellipse with alpha based on health
 function drawPlayer() {
-  fill(playerFill,playerHealth);
-  ellipse(playerX,playerY,playerRadius*2);
+  image(proto,playerX,playerY,150,150);
 }
 
 // showLevel()
