@@ -49,6 +49,7 @@ var eatHealth = 10;
 // Number of prey eaten during the game
 var preyEaten = 0;
 
+// Variables for the noise
 var tx = 0;
 var ty = 0;
 
@@ -57,6 +58,12 @@ var bg; // bg
 var proto; //player
 var bacteria //prey
 
+// sounds
+var ambiance;
+var gobage2;
+
+// The font used
+var myFont;
 
 // Levels and life
 var level = 1;
@@ -65,9 +72,14 @@ var level = 1;
 //
 // Preload assets for the game
 function preload() {
-  bg = loadImage('assets/images/P1_bg.png');
+  myFont = loadFont('assets/LilitaOne-Regular.ttf');
+
+  bg = loadImage('assets/images/P1_bg.gif');
   proto = loadImage('assets/images/P1_proto.png');
   bacteria = loadImage('assets/images/P1_bacteria.png');
+
+  ambiance = loadSound("assets/sounds/ambiance.mp3");
+  gobage = loadSound("assets/sounds/gobage.mp3");
 }
 
 // setup()
@@ -77,9 +89,15 @@ function setup() {
   createCanvas(1000,600);
 
   noStroke();
+  textFont(myFont);
 
   setupPrey();
   setupPlayer();
+
+  // Setup Sound
+  ambiance.setVolume(0.4);
+  ambiance.play();
+  ambiance.loop(true);
 }
 
 // setupPrey()
@@ -163,6 +181,7 @@ function handleInput() {
     playerVY *= playerAcceleration;
     playerVX *= playerAcceleration;
     playerHealth = constrain(playerHealth - 1,0,playerMaxHealth);
+
   }
 }
 
@@ -198,6 +217,7 @@ function movePlayer() {
 function updateHealth() {
   // Reduce player health, constrain to reasonable range
   playerHealth = constrain(playerHealth - 0.5,0,playerMaxHealth);
+
   // Check if the player is dead
   if (playerHealth === 0) {
     // If so, the game is over
@@ -220,6 +240,9 @@ function checkEating() {
 
     // Check if the prey died
     if (preyHealth === 0) {
+      // Make sound effect
+      gobage.setVolume(0.7);
+      gobage.play();
       // Move the "new" prey to a random position
       preyX = random(0,width);
       preyY = random(0,height);
@@ -296,7 +319,8 @@ function drawPlayer() {
 //
 // Display the level and the health
 function showLevel() {
-  textSize(70);
+
+  textSize(100);
   fill(255,0,0);
   var levelLife = level;
   text(levelLife,width/10,height/5);
@@ -308,7 +332,7 @@ function showLevel() {
 function showGameOver() {
   textSize(32);
   textAlign(CENTER,CENTER);
-  fill(0);
+  fill(255,0,0);
   var gameOverText = "GAME OVER\n";
   gameOverText += "You ate " + preyEaten + " prey\n";
   gameOverText += "before you died."
