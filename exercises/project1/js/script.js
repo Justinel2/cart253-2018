@@ -1,9 +1,12 @@
 /******************************************************
+PHAGOCYTOSIS
+by Justine Lardeux 40030920
 
+adapted from:
 Game - Chaser
 Pippin Barr
 
-A simple game of cat and mouse.
+A simple game showing the process of phagocytosis. Adapted from a game of cat and mouse.
 
 Physics-based movement, keyboard controls, health/stamina,
 sprinting, random movement, screen wrap.
@@ -19,7 +22,7 @@ var playerY;
 var playerRadius = 25;
 var playerVX = 0;
 var playerVY = 0;
-var playerRegSpeed = 2;
+var playerRegSpeed = 4;
 var playerAcceleration = 2;
 // Player health
 var playerHealth;
@@ -28,12 +31,13 @@ var playerMaxHealth = 255;
 var playerFill = 50;
 
 // Prey position, size, velocity
+
 var preyX;
 var preyY;
 var preyRadius = 25;
 var preyVX;
 var preyVY;
-var preyMaxSpeed = 4;
+var preyMaxSpeed = 10;
 // Prey health
 var preyHealth;
 var preyMaxHealth = 100;
@@ -45,16 +49,27 @@ var eatHealth = 10;
 // Number of prey eaten during the game
 var preyEaten = 0;
 
-
-
 var tx = 0;
 var ty = 0;
+
+// Background image
+var img;
+
+// Levels and life
+var level = 1;
+
+// preload()
+//
+// Preload assets for the game
+function preload() {
+  bg = loadImage('assets/images/P1_bg.png');
+}
 
 // setup()
 //
 // Sets up the basic elements of the game
 function setup() {
-  createCanvas(500,500);
+  createCanvas(1000,600);
 
   noStroke();
 
@@ -90,7 +105,7 @@ function setupPlayer() {
 // displays the two agents.
 // When the game is over, shows the game over screen.
 function draw() {
-  background(100,100,200);
+  background(bg);
 
   if (!gameOver) {
     handleInput();
@@ -103,6 +118,8 @@ function draw() {
 
     drawPrey();
     drawPlayer();
+
+    showLevel();
   }
   else {
     showGameOver();
@@ -205,6 +222,16 @@ function checkEating() {
       preyHealth = preyMaxHealth;
       // Track how many prey were eaten
       preyEaten++;
+      // Go up one level everytime three prey have died
+      if (preyEaten % 2 === 0 && preyEaten != 0) {
+        level++
+        // Check if the health of the player is more than 100
+        if (playerHealth > 100) {
+          // If so, lower the life of 10 points each time until 100 points maximum
+          playerMaxHealth -= 5;
+        }
+      }
+
     }
   }
 }
@@ -260,6 +287,16 @@ function drawPrey() {
 function drawPlayer() {
   fill(playerFill,playerHealth);
   ellipse(playerX,playerY,playerRadius*2);
+}
+
+// showLevel()
+//
+// Display the level and the health
+function showLevel() {
+  textSize(70);
+  fill(255,0,0);
+  var levelLife = level;
+  text(levelLife,width/10,height/5);
 }
 
 // showGameOver()
