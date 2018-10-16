@@ -1,4 +1,5 @@
 // Pong
+// Justine Lardeux 40030920
 // by Pippin Barr
 //
 // A primitive implementation of Pong with no scoring system
@@ -39,7 +40,8 @@ var leftPaddle = {
   vy: 0,
   speed: 5,
   upKeyCode: 87, // The key code for W
-  downKeyCode: 83 // The key code for S
+  downKeyCode: 83, // The key code for S
+  score: 0
 }
 
 // RIGHT PADDLE
@@ -55,7 +57,8 @@ var rightPaddle = {
   vy: 0,
   speed: 5,
   upKeyCode: 38, // The key code for the UP ARROW
-  downKeyCode: 40 // The key code for the DOWN ARROW
+  downKeyCode: 40, // The key code for the DOWN ARROW
+  score: 0
 }
 
 // A variable to hold the beep sound we will play on bouncing
@@ -261,6 +264,14 @@ function handleBallOffScreen() {
     // carries on moving with the same velocity after its
     // position is reset.
     // This is where we would count points etc!
+
+    // Checking which side of the screen the ball as left
+    if (ballLeft < width/2) {       //If the ball left on the left side
+      rightPaddle.score++;          //The right paddle gets one point
+    }
+    else if (ballRight > width/2) { //If the ball left on the right side
+      leftPaddle.score++;           //The left paddle gets one point
+    }
   }
 }
 
