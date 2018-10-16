@@ -149,6 +149,7 @@ function draw() {
   displayPaddle(leftPaddle);
   fill(rightPaddle.c);
   displayPaddle(rightPaddle);
+  fill(255);
   displayBall();
 }
 
@@ -246,6 +247,8 @@ function handleBallPaddleCollision(paddle) {
     if (ballLeft < paddleRight && ballRight > paddleLeft) {
       // Then the ball is touching the paddle so reverse its vx
       ball.vx = -ball.vx;
+      // In case the ball had a different y velocity, reset the velocity
+      reset();
       // Play our bouncing sound effect by rewinding and then playing
       beepSFX.currentTime = 0;
       beepSFX.play();
@@ -268,10 +271,10 @@ function handleBallOffScreen() {
     // If it went off either side, reset it to the centre
     ball.x = width/2;
     ball.y = height/2;
-    // NOTE that we don't change its velocity here so it just
-    // carries on moving with the same velocity after its
-    // position is reset.
-    // This is where we would count points etc!
+    // Reverse it's vx
+    ball.vx = -ball.vx;
+    // Randomize its vy
+    ball.vy = random(-10,10);
 
     // Checking which side of the screen the ball as left
     if (ballLeft < width/2) {       //If the ball left on the left side
@@ -284,11 +287,18 @@ function handleBallOffScreen() {
     }
   }
 }
+// reset()
+// Reset the y velocity of the ball
+function reset() {
+  ball.vy = ball.speed;
+}
 
+// displayScore()
+// Changes the color of the paddle depending on the score of each
 function displayScore() {
-rightPaddle.c = color(rightPaddle.score*5,leftPaddle.score*5,255);
+rightPaddle.c = color(rightPaddle.score*5,leftPaddle.score*5,0);
 console.log(rightPaddle.c);
-leftPaddle.c = color(leftPaddle.score*5,rightPaddle.score*5,255);
+leftPaddle.c = color(leftPaddle.score*5,rightPaddle.score*5,0);
 console.log(leftPaddle.c);
 }
 
