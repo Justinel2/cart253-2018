@@ -7,7 +7,7 @@
 
 // Game colors
 var bgColor = 0;
-var fgColor = 255;
+var fgColor = (255,255,255);
 
 // BALL
 
@@ -41,7 +41,8 @@ var leftPaddle = {
   speed: 5,
   upKeyCode: 87, // The key code for W
   downKeyCode: 83, // The key code for S
-  score: 0
+  score: 0,
+  c: fgColor
 }
 
 // RIGHT PADDLE
@@ -58,7 +59,8 @@ var rightPaddle = {
   speed: 5,
   upKeyCode: 38, // The key code for the UP ARROW
   downKeyCode: 40, // The key code for the DOWN ARROW
-  score: 0
+  score: 0,
+  c: fgColor
 }
 
 // A variable to hold the beep sound we will play on bouncing
@@ -80,8 +82,8 @@ function setup() {
   // Create canvas and set drawing modes
   createCanvas(640,480);
   rectMode(CENTER);
-  noStroke();
-  fill(fgColor);
+  stroke(255);
+  strokeWeight(0.5);
 
   setupPaddles();
   setupBall();
@@ -138,8 +140,14 @@ function draw() {
   // Handle the ball going off screen
   handleBallOffScreen();
 
+  // Fill the paddles
+  displayScore(leftPaddle);
+  displayScore(rightPaddle);
+
   // Display the paddles and ball
+  fill(leftPaddle.c);
   displayPaddle(leftPaddle);
+  fill(rightPaddle.c);
   displayPaddle(rightPaddle);
   displayBall();
 }
@@ -268,11 +276,20 @@ function handleBallOffScreen() {
     // Checking which side of the screen the ball as left
     if (ballLeft < width/2) {       //If the ball left on the left side
       rightPaddle.score++;          //The right paddle gets one point
+      console.log(rightPaddle.score);
     }
     else if (ballRight > width/2) { //If the ball left on the right side
       leftPaddle.score++;           //The left paddle gets one point
+      console.log(leftPaddle.score);
     }
   }
+}
+
+function displayScore() {
+rightPaddle.c = color(rightPaddle.score*5,leftPaddle.score*5,255);
+console.log(rightPaddle.c);
+leftPaddle.c = color(leftPaddle.score*5,rightPaddle.score*5,255);
+console.log(leftPaddle.c);
 }
 
 // displayBall()
