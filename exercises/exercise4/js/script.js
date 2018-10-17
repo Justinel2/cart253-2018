@@ -6,7 +6,7 @@
 // just the ability to play the game with the keyboard.
 
 // Game colors
-var bgColor = 0;
+var bgColor = 255;
 var fgColor = (255,255,255);
 
 // BALL
@@ -63,14 +63,14 @@ var rightPaddle = {
   c: fgColor
 }
 
-// A variable to hold the beep sound we will play on bouncing
-var beepSFX;
+// A variable to hold the camera sound we will play on bouncing
+var cameraSFX;
 
 // preload()
 //
-// Loads the beep audio for the sound of bouncing
+// Loads the camera audio for the sound of bouncing
 function preload() {
-  beepSFX = new Audio("assets/sounds/beep.wav");
+  cameraSFX = new Audio("assets/sounds/camera.mp3");
 }
 
 // setup()
@@ -117,7 +117,7 @@ function setupBall() {
 // Calls the appropriate functions to run the game
 function draw() {
   // Fill the background
-  background(bgColor);
+  background(random(0,255), 12);
 
   // Handle input
   // Notice how we're using the SAME FUNCTION to handle the input
@@ -151,6 +151,8 @@ function draw() {
   displayPaddle(rightPaddle);
   fill(255);
   displayBall();
+  displayTrace();
+
 }
 
 
@@ -218,8 +220,8 @@ function handleBallWallCollision() {
     // If it touched the top or bottom, reverse its vy
     ball.vy = -ball.vy;
     // Play our bouncing sound effect by rewinding and then playing
-    beepSFX.currentTime = 0;
-    beepSFX.play();
+    cameraSFX.currentTime = 0;
+    cameraSFX.play();
   }
 }
 
@@ -250,8 +252,8 @@ function handleBallPaddleCollision(paddle) {
       // In case the ball had a different y velocity, reset the velocity
       reset();
       // Play our bouncing sound effect by rewinding and then playing
-      beepSFX.currentTime = 0;
-      beepSFX.play();
+      cameraSFX.currentTime = 0;
+      cameraSFX.play();
     }
   }
 }
@@ -300,6 +302,13 @@ rightPaddle.c = color(rightPaddle.score*5,leftPaddle.score*5,0);
 console.log(rightPaddle.c);
 leftPaddle.c = color(leftPaddle.score*5,rightPaddle.score*5,0);
 console.log(leftPaddle.c);
+}
+
+// displayTrace()
+//
+// Trace the path of the ball
+function displayTrace() {
+  line(ball.x, ball.y);
 }
 
 // displayBall()
