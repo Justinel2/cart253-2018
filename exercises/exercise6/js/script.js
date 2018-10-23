@@ -43,7 +43,7 @@ function setup() {
   leftPaddle = new Paddle(0,height/2,10,60,10,83,87);
 
 //////////////// FIXED
-// Syntax error - added a Missing closing curly brackets after the setup() function
+// Syntax error - added a Missing closing curly bracket after the setup() function
 }
 
 // draw()
@@ -57,7 +57,7 @@ function draw() {
   rightPaddle.handleInput();
 
   //////////////// FIXED
-  // Syntax error - We want to call a function, so ball.update needs () at the end - fixed
+  // Behavioural error - We want to call a function, so ball.update needs () at the end - fixed
   ball.update();
   leftPaddle.update();
   rightPaddle.update();

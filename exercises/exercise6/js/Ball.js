@@ -28,7 +28,10 @@ function Ball(x,y,vx,vy,size,speed) {
 // since that is how it is written that way in script.js
 Ball.prototype.update = function () {
   // Update position with velocity
-  this.x = this.vx;
+  //////////////// FIXED
+  // Behavioural error - Changed "this.x = this.vx" to "this.x += this.vx"
+  // so that the x location will be influenced by the x velocity (so it can move on the x axis)
+  this.x += this.vx;
   this.y += this.vy;
 
   // Constrain y position to be on screen
