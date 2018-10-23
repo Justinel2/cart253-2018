@@ -13,6 +13,8 @@
 var ball;
 var leftPaddle;
 var rightPaddle;
+var topPaddle;
+var bottomPaddle;
 
 // setup()
 //
@@ -26,6 +28,8 @@ function setup() {
   // Create the left paddle with W and S as controls
   // Keycodes 83 and 87 are W and S respectively
   leftPaddle = new Paddle(0,height/2,10,60,10,83,87);
+  topPaddle = new Paddle(width/2,0,10,60,10,LEFT_ARROW,RIGHT_ARROW)
+  bottomPaddle = new Paddle(width/2,0,10,60,10,LEFT_ARROW,RIGHT_ARROW)
 }
 
 // draw()
@@ -52,4 +56,6 @@ function draw() {
   ball.display();
   leftPaddle.display();
   rightPaddle.display();
+  topPaddle.display();
+  bottomPaddle.display();
 }
