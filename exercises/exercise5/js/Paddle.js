@@ -14,6 +14,7 @@ function Paddle(x,y,w,h,speed,downKey,upKey,score) {
   this.downKey = downKey;
   this.upKey = upKey;
   this.score = 0;
+  this.c = (255,255,255);
 }
 /////// END NEW ///////
 
@@ -48,12 +49,21 @@ Paddle.prototype.update = function() {
 Paddle.prototype.updateScore = function() {
   this.score++;
 }
-/////// END NEW ///////
+
+//displayScore()
+//
+//Display the current score
+Paddle.prototype.displayScore = function() {
+  this.c = 255 - (this.score*15);
+  }
 
 // display()
 //
 // Draw the paddle as a rectangle on the screen
 Paddle.prototype.display = function() {
-  fill(255);
+  fill(this.c);
+  strokeWeight(2);
+  stroke(255);
   rect(this.x,this.y,this.w,this.h);
 }
+/////// END NEW ///////
