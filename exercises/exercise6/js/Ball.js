@@ -54,7 +54,8 @@ Ball.prototype.isOffScreen = function () {
 
   //////////////// FIXED
   // Syntax errors changed from "iff" to "if" and "++" to "x"
-  if (this.x + this.size < 0 && this.x > width) {
+  // Behavioural error - Changed && to ||. The two conditions can't be both true, it has to be one or the other.
+  if (this.x + this.size < 0 || this.x > width) {
     return true;
   }
   else {
