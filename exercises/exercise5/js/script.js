@@ -2,8 +2,8 @@
 // Justine Lardeux
 // by Pippin Barr
 //
-// A primitive implementation of Pong with no scoring system
-// just the ability to play the game with the keyboard.
+// A primitive implementation of Pong with a scoring system
+// with the ability to play the game with the keyboard.
 //
 // Arrow keys control the right hand paddle, W and S control
 // the left hand paddle.
@@ -23,10 +23,10 @@ function setup() {
   // Create a ball
   ball = new Ball(width/2,height/2,5,5,10,5);
   // Create the right paddle with UP and DOWN as controls
-  rightPaddle = new Paddle(width-10,height/2,10,60,10,DOWN_ARROW,UP_ARROW);
+  rightPaddle = new Paddle(width-10,height/2,10,60,10,DOWN_ARROW,UP_ARROW,0);
   // Create the left paddle with W and S as controls
   // Keycodes 83 and 87 are W and S respectively
-  leftPaddle = new Paddle(0,height/2,10,60,10,83,87);
+  leftPaddle = new Paddle(0,height/2,10,60,10,83,87,0);
 }
 
 // draw()
@@ -43,9 +43,16 @@ function draw() {
   leftPaddle.update();
   rightPaddle.update();
 
-  if (ball.isOffScreen()) {
+  ///////// NEW /////////
+  if (ball.isOffScreen() === "left") {
+    rightPaddle.updateScore();
     ball.reset();
   }
+  else if (ball.isOffScreen() === "right") {
+    leftPaddle.updateScore();
+    ball.reset();
+  }
+  /////// END NEW ///////
 
   ball.handleCollision(leftPaddle);
   ball.handleCollision(rightPaddle);
