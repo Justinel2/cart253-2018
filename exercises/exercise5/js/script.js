@@ -15,6 +15,18 @@ var ball;
 var leftPaddle;
 var rightPaddle;
 
+///////// NEW /////////
+// A variable to hold the camera sound we will play on bouncing
+var cameraSFX;
+
+// preload()
+//
+// Loads the camera audio for the sound of bouncing
+function preload() {
+  cameraSFX = new Audio("assets/sounds/camera.mp3");
+}
+/////// END NEW ///////
+
 // setup()
 //
 // Creates the ball and paddles
@@ -34,7 +46,7 @@ function setup() {
 // Handles input, updates all the elements, checks for collisions
 // and displays everything.
 function draw() {
-  background(0);
+  background(random(0,200),12);
 
   leftPaddle.handleInput();
   rightPaddle.handleInput();

@@ -62,7 +62,7 @@ Paddle.prototype.displayScore = function() {
 // Draw the paddle as a rectangle on the screen
 Paddle.prototype.display = function() {
   fill(this.c);
-  strokeWeight(2);
+  strokeWeight(0.5);
   stroke(255);
   rect(this.x,this.y,this.w,this.h);
 }

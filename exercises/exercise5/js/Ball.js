@@ -32,6 +32,11 @@ Ball.prototype.update = function () {
   // Check for touching upper or lower edge and reverse velocity if so
   if (this.y === 0 || this.y + this.size === height) {
     this.vy = -this.vy;
+    ///////// NEW /////////
+    // Play our bouncing sound effect by rewinding and then playing
+    cameraSFX.currentTime = 0;
+    cameraSFX.play();
+    /////// END NEW ///////
   }
 }
 
@@ -50,7 +55,6 @@ Ball.prototype.isOffScreen = function () {
     return "right";
   }
   /////// END NEW ///////
-
   else {
     return false;
   }
@@ -78,6 +82,11 @@ Ball.prototype.handleCollision = function(paddle) {
       this.y -= this.vy;
       // Reverse x velocity to bounce
       this.vx = -this.vx;
+      ///////// NEW /////////
+      // Play our bouncing sound effect by rewinding and then playing
+      cameraSFX.currentTime = 0;
+      cameraSFX.play();
+      /////// END NEW ///////
     }
   }
 }
