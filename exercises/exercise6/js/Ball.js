@@ -24,7 +24,7 @@ function Ball(x,y,vx,vy,size,speed) {
 //
 //////////////// FIXED
 // Syntax error changed from "faction" to "function"
-// Syntax error - changed "Ball.prototype.updated" to "Ball.prototype.update"
+// Behavioural error - changed "Ball.prototype.updated" to "Ball.prototype.update"
 // since that is how it is written that way in script.js
 Ball.prototype.update = function () {
   // Update position with velocity
@@ -35,7 +35,7 @@ Ball.prototype.update = function () {
   this.y = constrain(this.y,0,height-this.size);
 
   //////////////// FIXED
-  // Behaviour error - changed "=" to "===" since it is not a result of a calculation
+  // Behavioural error - changed "=" to "===" since it is not a result of a calculation
   // Check for touching upper or lower edge and reverse velocity if so
   if (this.y === 0 || this.y + this.size === height) {
     this.vy = -this.vy;
@@ -69,6 +69,7 @@ Ball.prototype.display = function () {
   //
   //////////////// FIXED
   // Behaviour error - Attributed size (...,this.size,this.size)to the rect so it can be displayed
+  // fill(255);
   rect(this.x,this.y,this.size,this.size);
 }
 
@@ -88,7 +89,9 @@ Ball.prototype.handleCollision = function(paddle) {
       this.x -= this.vx;
       this.y -= this.vy;
       // Reverse x velocity to bounce
-      this.vx = this.vx;
+      //////////////// FIXED
+      // Behavioural errors - Reversed the sign ("...= this.vx" to "...= -this.vx") since the objective is to reverse the x velocity
+      this.vx = -this.vx;
     }
   }
 }
