@@ -39,6 +39,9 @@ function setup() {
   // Syntax error - added a closing parenthesis at "Paddle(0,height/2,10,60,10,83,87"
   leftPaddle = new Paddle(0,height/2,10,60,10,83,87);
 
+//////////////// FIXED
+// Syntax error - added a Missing closing curly brackets after the setup() function
+}
 
 // draw()
 //
@@ -56,10 +59,12 @@ function draw() {
   leftPaddle.update();
   rightPaddle.update();
 
-  if (ball.isOffScreen())
   //////////////// FIXED
-  // Behaviour error - We want to call a function reset() from ball, it then needs to be ball.reset() and not reset()
-    ball.reset();
+  // Behaviour error - changed "ball.isOffTheScreen" to "ball.isOffScreen" since it is the way it is written in Ball.js
+  if (ball.isOffScreen()) {
+    //////////////// FIXED
+    // Behaviour error - We want to call a function reset() from ball, it then needs to be ball.reset() and not reset()
+      ball.reset();
   }
 
   ball.handleCollision(leftPaddle);
