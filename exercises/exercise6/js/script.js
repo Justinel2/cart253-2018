@@ -29,7 +29,9 @@ function setup() {
   createCanvas(640,480);
   noStroke();
   // Create a ball
-  ball = new Ball(width/2,height/2,50,50,10,50);
+  //////////////// FIXED
+  // Behavioural error - changed the vx, vy and speed from 50 to 5 so it makes the game more playable
+  ball = new Ball(width/2,height/2,5,5,10,5);
   // Create the right paddle with UP and DOWN as controls
   //////////////// FIXED
   // Behavioural error - Changed height (was 600) to 60 so it is the same size as the leftPaddle
