@@ -40,7 +40,6 @@ Ball.prototype.update = function () {
 // Checks if the ball has moved off the screen and, if so, returns true.
 // Otherwise it returns false.
 Ball.prototype.isOffScreen = function () {
-
   ///////// NEW /////////
   // If ball as left the screen
   // Checking which side of the screen the ball as left
@@ -89,4 +88,10 @@ Ball.prototype.handleCollision = function(paddle) {
 Ball.prototype.reset = function () {
   this.x = width/2;
   this.y = height/2;
+  ///////// NEW /////////
+  // Reverse it's vx
+  this.vx = -this.vx;
+  // Randomize its vy
+  this.vy = random(-10,10);
+  /////// END NEW ///////
 }
