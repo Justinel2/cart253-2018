@@ -58,6 +58,7 @@ Ball.prototype.isOffScreen = function () {
 // display()
 //
 // Draw the ball as a rectangle on the screen
+//
 //////////////// FIXED
 // Syntax error - missing a comma between "this.x" and "this.y"
 Ball.prototype.display = function () {
@@ -68,7 +69,10 @@ Ball.prototype.display = function () {
 //
 // Check if this ball overlaps the paddle passed as an argument
 // and if so reverse x velocity to bounce
-Ball.prototyp.handleCollision = function((paddle) {
+//
+//////////////// FIXED
+// Syntax errors - added the missing "e" in "prototype" and removed an extra closing parenthese at "(paddle)"
+Ball.prototype.handleCollision = function(paddle) {
   // Check if the ball overlaps the paddle on x axis
   if (this.x + this.size > paddle.x && this.x < paddle.x + paddle.w) {
     // Check if the ball overlaps the paddle on y axis
