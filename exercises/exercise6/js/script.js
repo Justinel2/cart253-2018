@@ -33,7 +33,8 @@ function setup() {
   // Create the right paddle with UP and DOWN as controls
   //////////////// FIXED
   // Behavioural error - Changed height (was 600) to 60 so it is the same size as the leftPaddle
-  rightPaddle = new Paddle(width-10,height/2,10,60,10,UP_ARROW,DOWN_ARROW);
+  // Behavioural error - Exchanged downKey and upKey keys (UP_ARROW <-> DOWN_ARROW)
+  rightPaddle = new Paddle(width-10,height/2,10,60,10,DOWN_ARROW,UP_ARROW);
   // Create the left paddle with W and S as controls
   // Keycodes 83 and 87 are W and S respectively
   //
