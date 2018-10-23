@@ -32,11 +32,12 @@ function Paddle(x,y,w,h,speed,downKey,upKey) {
 //
 //////////////// FIXED
 // Syntax error - changed "proto" to "prototype"
+// Logical error - changed "keyIsDown" instead of keyDown so the movement stops when the key is not pressed
 Paddle.prototype.handleInput = function() {
-  if (keyDown(upKey)) {
+  if (keyIsDown(upKey)) {
     this.vy = -this.speed;
   }
-  else if (keyDown(downKey)) {
+  else if (keyIsDown(downKey)) {
     this.vy = -this.speed;
   }
 }
