@@ -24,7 +24,9 @@ function Ball(x,y,vx,vy,size,speed) {
 //
 //////////////// FIXED
 // Syntax error changed from "faction" to "function"
-Ball.prototype.updated = function () {
+// Syntax error - changed "Ball.prototype.updated" to "Ball.prototype.update"
+// since that is how it is written that way in script.js
+Ball.prototype.update = function () {
   // Update position with velocity
   this.x = this.vx;
   this.y += this.vy;
