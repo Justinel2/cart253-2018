@@ -64,7 +64,10 @@ Ball.prototype.isOffScreen = function () {
 //////////////// FIXED
 // Syntax error - missing a comma between "this.x" and "this.y"
 Ball.prototype.display = function () {
-  rect(this.x,this.y);
+  //
+  //////////////// FIXED
+  // Behaviour error - Attributed size (...,this.size,this.size)to the rect so it can be displayed
+  rect(this.x,this.y,this.size,this.size);
 }
 
 // handleCollision(paddle)
@@ -91,6 +94,10 @@ Ball.prototype.handleCollision = function(paddle) {
 // reset()
 //
 // Set position back to the middle of the screen
+//
+//////////////// FIXED
+// Syntax error - changed "Ball.prototype.rest" to "Ball.prototype.reset" since it is
+// how it is written in script.js
 Ball.prototype.reset = function () {
   this.x = width/2;
   this.y = height/2;
