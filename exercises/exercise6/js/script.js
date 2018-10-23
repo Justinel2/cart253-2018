@@ -57,7 +57,9 @@ function draw() {
   rightPaddle.update();
 
   if (ball.isOffTheScreen())
-    reset();
+  //////////////// FIXED
+  // Behaviour error - We want to call a function reset() from ball, it then needs to be ball.reset() and not reset()
+    ball.reset();
   }
 
   ball.handleCollision(leftPaddle);
