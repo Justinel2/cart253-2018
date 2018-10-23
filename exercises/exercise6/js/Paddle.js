@@ -8,7 +8,10 @@
 //////////////// FIXED
 // The next line of comment should be preceded by "//"
 //Sets the properties with the provided arguments or defaults
-function Pladdle(x,y,w,h,speed,downKey,upKey) {
+//
+//////////////// FIXED
+// Syntax error - changed "Pladdle" to "Paddle"
+function Paddle(x,y,w,h,speed,downKey,upKey) {
   this.x = x;
   this.y = y;
   this.xv = 0;
@@ -24,7 +27,10 @@ function Pladdle(x,y,w,h,speed,downKey,upKey) {
 //
 // Check if the up or down keys are pressed and update velocity
 // appropriately
-Paddle.proto.handleInput = function() {
+//
+//////////////// FIXED
+// Syntax error - changed "proto" to "prototype"
+Paddle.prototype.handleInput = function() {
   if (keyDown(upKey)) {
     this.vy = -this.speed;
   }
