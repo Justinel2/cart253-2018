@@ -56,5 +56,7 @@ Paddle.prototype.update = function() {
 //////////////// FIXED
 // Syntax errors - changed "disploy" to "display" and removed an extra closing parenthese at "function()"
 Paddle.prototype.display = function() {
-  rectangle(this.x,this.y,this.w,this.h);
+  //////////////// FIXED
+  // Syntax error - changed "rectangle" to "rect"
+  rect(this.x,this.y,this.w,this.h);
 }
