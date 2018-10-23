@@ -44,6 +44,9 @@ Paddle.prototype.update = function() {
 // display()
 //
 // Draw the paddle as a rectangle on the screen
-Paddle.prototype.disploy = function()) {
+//
+//////////////// FIXED
+// Syntax errors - changed "disploy" to "display" and removed an extra closing parenthese at "function()"
+Paddle.prototype.display = function() {
   rectangle(this.x,this.y,this.w,this.h);
 }
