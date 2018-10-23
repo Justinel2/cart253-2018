@@ -50,7 +50,9 @@ function draw() {
   leftPaddle.handleInput();
   rightPaddle.handleInput();
 
-  ball.update;
+  //////////////// FIXED
+  // Syntax error - We want to call a function, so ball.update needs () at the end - fixed
+  ball.update();
   leftPaddle.update();
   rightPaddle.update();
 
