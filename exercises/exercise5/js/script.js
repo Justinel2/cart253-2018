@@ -1,9 +1,14 @@
-// Pong - Exercise 5
-// Justine Lardeux 40030920
+// Basic OO Pong - Exercise 5
+// Justine Lardeux
 // by Pippin Barr
 //
 // A primitive implementation of Pong with no scoring system
 // just the ability to play the game with the keyboard.
+//
+// Arrow keys control the right hand paddle, W and S control
+// the left hand paddle.
+//
+// Written with JavaScript OOP.
 
 // Game colors
 var bgColor = 255;
