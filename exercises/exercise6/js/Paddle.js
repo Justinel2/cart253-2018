@@ -41,6 +41,12 @@ Paddle.prototype.handleInput = function() {
   else if (keyIsDown(this.downKey)) {
     this.vy = -this.speed;
   }
+  //////////////// FIXED
+  // Behavioural error - Added the else statement. The paddle should 
+  // not move if no key is pressed, so if else the vy should be to 0
+  else {
+    this.vy = 0;
+  }
 }
 
 // update()
