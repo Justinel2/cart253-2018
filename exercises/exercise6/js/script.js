@@ -56,7 +56,7 @@ function draw() {
   leftPaddle.update();
   rightPaddle.update();
 
-  if (ball.isOffTheScreen())
+  if (ball.isOffScreen())
   //////////////// FIXED
   // Behaviour error - We want to call a function reset() from ball, it then needs to be ball.reset() and not reset()
     ball.reset();
