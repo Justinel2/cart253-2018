@@ -31,7 +31,7 @@ function setup() {
   // Keycodes 83 and 87 are W and S respectively
   //
   //////////////// FIXED
-  // Syntax errors - added a closing parenthesis at "Paddle(0,height/2,10,60,10,83,87"
+  // Syntax error - added a closing parenthesis at "Paddle(0,height/2,10,60,10,83,87"
   leftPaddle = new Paddle(0,height/2,10,60,10,83,87);
 
 
@@ -58,5 +58,8 @@ function draw() {
 
   ball.display();
   leftPaddle.display();
-  rightPaddle.display(;
+
+  //////////////// FIXED
+  // Syntax error - added a missing closing parenthesis at "rightPaddle.display("
+  rightPaddle.display();
 }
