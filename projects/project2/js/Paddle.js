@@ -6,7 +6,7 @@
 // Paddle constructor
 //
 // Sets the properties with the provided arguments or defaults
-function Paddle(x,y,w,h,speed,downKey,upKey) {
+function Paddle(x,y,w,h,speed,downKey,upKey,leftKey,rightKey) {
   this.x = x;
   this.y = y;
   this.vx = 0;
@@ -16,15 +16,18 @@ function Paddle(x,y,w,h,speed,downKey,upKey) {
   this.speed = speed;
   this.downKey = downKey;
   this.upKey = upKey;
+  this.leftKey = leftKey;
+  this.rightKey = rightKey;
 }
 
 // handleInput()
 //
 // Check if the up or down keys are pressed and update velocity
 // appropriately
-Paddle.prototype.handleInput = function() {
+Paddle.prototype.handleInputVertical = function() {
   if (keyIsDown(this.upKey)) {
     this.vy = -this.speed;
+    console.log(this.vy);
   }
   else if (keyIsDown(this.downKey)) {
     this.vy = this.speed;
@@ -34,12 +37,28 @@ Paddle.prototype.handleInput = function() {
   }
 }
 
+Paddle.prototype.handleInputHorizontal = function() {
+  if (keyIsDown(this.leftKey)) {
+    this.vx = -this.speed;
+    console.log(this.vx);
+  }
+  else if (keyIsDown(this.rightKey)) {
+    this.vx = this.speed;
+  }
+  else {
+    this.vx = 0;
+  }
+}
+
 // update()
 // Update y position based on velocity
 // Constrain the resulting position to be within the canvas
 Paddle.prototype.update = function() {
   this.y += this.vy;
   this.y = constrain(this.y,0,height-this.h);
+
+  this.x += this.vx;
+  this.x = constrain(this.x,0,width-this.w);
 }
 
 // display()
