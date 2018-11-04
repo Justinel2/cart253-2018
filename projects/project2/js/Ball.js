@@ -25,14 +25,6 @@ Ball.prototype.update = function () {
   // Update position with velocity
   this.x += this.vx;
   this.y += this.vy;
-
-  // Constrain y position to be on screen
-  this.y = constrain(this.y,0,height-this.size);
-
-  // Check for touching upper or lower edge and reverse velocity if so
-  if (this.y === 0 || this.y + this.size === height) {
-    this.vy = -this.vy;
-  }
 }
 
 // isOffScreen()
@@ -41,7 +33,7 @@ Ball.prototype.update = function () {
 // Otherwise it returns false.
 Ball.prototype.isOffScreen = function () {
   // Check for going off screen and reset if so
-  if (this.x + this.size < 0 || this.x > width) {
+  if (this.x + this.size < 0 || this.x > width || this.y < 0 || this.y > height) {
     return true;
   }
   else {
@@ -64,13 +56,12 @@ Ball.prototype.display = function () {
 Ball.prototype.handleCollision = function(paddle) {
   // Check if the ball overlaps the paddle on x axis
   if (this.x + this.size > paddle.x && this.x < paddle.x + paddle.w) {
+    // Reverse x velocity to bounce
+    this.vx = -this.vx;
     // Check if the ball overlaps the paddle on y axis
     if (this.y + this.size > paddle.y && this.y < paddle.y + paddle.h) {
-      // If so, move ball back to previous position (by subtracting current velocity)
-      this.x -= this.vx;
-      this.y -= this.vy;
-      // Reverse x velocity to bounce
-      this.vx = -this.vx;
+      // Reverse y velocity to bounce
+      this.vy = -this.vy;
     }
   }
 }

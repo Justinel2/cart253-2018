@@ -71,6 +71,8 @@ function draw() {
     }
     balls[i].handleCollision(leftPaddle);
     balls[i].handleCollision(rightPaddle);
+    balls[i].handleCollision(topPaddle);
+    balls[i].handleCollision(bottomPaddle);
     balls[i].display();
   }
 
