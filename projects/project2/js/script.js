@@ -11,17 +11,21 @@
 
 // Variable to contain the objects representing our balls and paddles
 var balls = [];
-var numBalls = 100;
+var numBalls = 2;
 var leftPaddle;
 var rightPaddle;
 var topPaddle;
 var bottomPaddle;
+var timer;
+var interval = 2000;
 
 // setup()
 //
 // Creates the balls and paddles
 function setup() {
   createCanvas(640,480);
+  // Create the interval
+  timer = setInterval(generator, interval);
   // Create the balls
   for (var i = 0; i < numBalls; i++) {
     balls.push(new Ball(width/2,height/2,random(-5,5),random(-5,5),10,5));
@@ -35,10 +39,12 @@ function setup() {
   bottomPaddle = new Paddle(width/2,height-10,60,10,10,40,38,37,39);
 }
 
-// timerFinished
+// generator()
 //
 //
-function timerFinished() {}
+function generator() {
+  balls.push(new Ball(width/2,height/2,random(-5,5),random(-5,5),10,5));
+}
 
 
 // draw()
@@ -67,7 +73,7 @@ function draw() {
     balls[i].handleCollision(rightPaddle);
     balls[i].display();
   }
-  
+
   leftPaddle.display();
   rightPaddle.display();
   topPaddle.display();
