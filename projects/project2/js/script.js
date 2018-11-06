@@ -36,7 +36,7 @@ var paddles = [];
 var pHs = [7.0,2.5,7.7,7.7];
 
 // Variable for temperature and level
-var temp;
+var temp = 37;
 var level;
 
 // Array containing the points for each macromolecules

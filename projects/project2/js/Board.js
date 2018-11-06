@@ -38,9 +38,10 @@ Board.prototype.display = function() {
   // Design the background of the canvas
   background(255);
   fill(255);
-  stroke(5,161,105);
+  noStroke();
+  // stroke(5,161,105);
   rect(40,40,560,560);
-  stroke(0)
+  stroke(5,161,105)
   fill(0);
   for (var i = 0; i < 200; i++) {
     line(pow(i,2),0,640,640-pow(i,2));
@@ -52,15 +53,11 @@ Board.prototype.display = function() {
   line(0,640,640,0);
   textSize(32);
 
-  // Draw the board on the screen
-  fill(0);
-  rect(this.x,this.y,this.w,this.h);
-
   // Display the information about the pH
   noStroke();
   textSize(16);
   textFont(bold);
-  fill(5,161,105);
+  fill(0);
   text("oral cavity,\nlarynx,\nesophagus\n",(width-395.542)/2,height/3);
   text("stomac\n",(width-395.542)/1.5,height/2);
   text("lumen of\nsmall intestine\n",(width-395.542)/2,height/1.6);
@@ -71,11 +68,10 @@ Board.prototype.display = function() {
   text("\n\npH = " + pHs[2],(width-395.542)/2,height/1.6);
   text("\n\npH = " + pHs[3],(width-395.542)/3,height/2);
 
-
   // Add the informations about the enzymes
   fill(0);
-  textSize(19);
   textFont(black);
+  textSize(19);
   text(enzymes[0],(width-395.542)/2,30);
   rotate(PI/2);
   text(enzymes[1],height/2,-610);
@@ -86,5 +82,15 @@ Board.prototype.display = function() {
   rotate(PI/2);
   textAlign(CENTER);
 
+  // Draw the board on the screen
+  fill(0);
+  rect(this.x,this.y,this.w,this.h);
+  fill(5,161,105);
+  rect(this.x,this.y,this.w,this.h/8);
+
+  // Add the information about the temperature
+  fill(0);
+  textSize(28);
+  text("TEMPERATURE = " + temp + " °C", this.x-20,this.y+20,this.w,this.h);
 
 }
