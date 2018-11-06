@@ -17,6 +17,6 @@ function Board(x,y,w,h) {
 //
 // Draw the board on the screen
 Board.prototype.display = function() {
-  fill(255,0,0);
+  fill(0);
   rect(this.x,this.y,this.w,this.h);
 }
