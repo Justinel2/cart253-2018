@@ -12,3 +12,11 @@ function Board(x,y,w,h) {
   this.w = w;
   this.h = h;
 }
+
+// display ()
+//
+// Draw the board on the screen
+Board.prototype.display = function() {
+  fill(255,0,0);
+  rect(this.x,this.y,this.w,this.h);
+}

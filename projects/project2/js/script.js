@@ -16,6 +16,7 @@ var leftPaddle;
 var rightPaddle;
 var topPaddle;
 var bottomPaddle;
+var board;
 var timer;
 var interval = 5000;
 
@@ -54,6 +55,7 @@ function setup() {
   leftPaddle = new Paddle(0,height/2,10,60,10,40,38,37,39);
   topPaddle = new Paddle((width-395.542)/2,0,60,10,10,40,38,37,39);
   bottomPaddle = new Paddle((width-395.542)/2,height-10,60,10,10,40,38,37,39);
+  board = new Board((width-395.542),0,395.542,height);
 }
 
 // generator()
@@ -98,4 +100,5 @@ function draw() {
   rightPaddle.display();
   topPaddle.display();
   bottomPaddle.display();
+  board.display();
 }
