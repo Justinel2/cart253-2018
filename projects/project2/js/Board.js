@@ -33,19 +33,27 @@ function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,sCFi,sCS,sCT,sCFo) {
 Board.prototype.handlePH = function(paddle) {
   if (this.phFi <= 6.5 || this.phFi >= 7.5) {
     this.sCFi = 255;
-    this.c = floor(this.phFi*-1);
+    if (this.phFi >= 0) {
+      this.c = floor(this.phFi*-1);
+    }
   }
   else if (this.phS <= 1.5 || this.phS >= 3.5) {
     this.sCS = 200;
-    this.l = floor(this.phS*-1);
+    if (this.phS >= 0) {
+      this.l = floor(this.phS*-1);
+    }
   }
   else if (this.phT <= 6.7 || this.phT >= 8.7) {
     this.sCT = 200;
-    this.p = floor(this.phT*-1);
+    if (this.phT >= 0) {
+      this.p = floor(this.phT*-1);
+    }
   }
   else if (this.phFo <= 6.7 || this.phFo >= 8.7) {
     this.sCFo = 200;
-    this.n = floor(this.phT*-1);
+    if (this.phFo >= 0) {
+      this.n = floor(this.phT*-1);
+    }
   }
   else {
     this.sCFi = 255;
@@ -55,17 +63,20 @@ Board.prototype.handlePH = function(paddle) {
 // handleTemp()
 //
 // Updates the consequences due to the fluctuation of the body temperature
-Board.prototype.display = function() {
+Board.prototype.display = function(restart) {
   if (this.t < 0 || this.t > 60) {
-    resetGame();
+    restart++;
   }
 }
 
-// updatePoints()
+// updateLevels()
 //
 // Update the points based on the total for each macromolecules
-Board.prototype.display = function(points,total) {
-
+Board.prototype.updateLevels = function(points,total) {
+  if (this.c >= this.level*2 && this.l >= this.level*2 && this.p >= this.level*2 && this.n >= level*2) {
+    this.level++;
+    console.log(this.level);
+  }
 }
 
 // display()
@@ -144,22 +155,42 @@ Board.prototype.display = function() {
   // Add the information about the temperature
   fill(0);
   textSize(28);
-  text("TEMPERATURE = " + this.temp + " °C", this.x-20,this.y+20,this.w,this.h);
+  text("TEMPERATURE = " + this.temp + " °C", this.x,this.y+20,this.w,this.h);
+
+  // Add the information about the level
+  text("LV: " + this.level,100,height/8);
 
   // Add the information about the number of macromolecules ingested
   // carbohydrates
   textSize(24);
   fill(255,238,0);
-  text("CARBOHYDRATES -> MONOSACCHARIDES\n" + this.c, this.x-20,this.y/8+100,this.w,this.h);
+  text("CARBOHYDRATES -> MONOSACCHARIDES\n" + this.c, this.x,this.y/8+100,this.w,this.h);
   // proteins
   fill(0,255,0);
-  text("PROTEINS -> AMINO ACIDS\n" + this.p, this.x-20,this.y/8+250,this.w,this.h);
+  text("PROTEINS -> AMINO ACIDS\n" + this.p, this.x,this.y/8+250,this.w,this.h);
   // lipids
   fill(255,0,0);
-  text("LIPIDS -> GLYCEROL,\n FATTY ACIDS,\n GLYCERIDS\n" + this.l, this.x-20,this.y/8+350,this.w,this.h);
+  text("LIPIDS -> GLYCEROL,\n FATTY ACIDS,\n GLYCERIDS\n" + this.l, this.x,this.y/8+350,this.w,this.h);
   // nuclear acids
   fill(0,0,255);
-  text("NUCLEAR ACIDS ->\nNITROGENOUS BASES,\n SUGARS, PHOSPHATES\n" + this.n, this.x-20,this.y/8+500,this.w,this.h);
+  text("NUCLEAR ACIDS ->\nNITROGENOUS BASES,\n SUGARS, PHOSPHATES\n" + this.n, this.x,this.y/8+500,this.w,this.h);
+}
+
+// startGame()
+//
+// A function to prompt the user to start the game (with instructions)
+Board.prototype.startGame = function() {
+  do {
+    background(255)
+    fill(5,161,105);
+    textSize(40);
+    textFont(black);
+    textAlign(CENTER,CENTER);
+    text("WELCOME TO THE\n MACROMOLECULES OF LIFE\n SIMULATION\n\n",(width/2)-320,50,800);
+    textSize(20);
+    fill(0);
+    text("You control the enzymes of the human organism that are able to digest the four macromolecules of life : carbohydrates, lipids, proteins and nuclear acids.\nThese enzymes are located on the four paddles of this PONG game.\n\n You need to capture the right macromolecule with the right paddle or bounce it to the right one. You also need to maintain homeostasis in the four sections of the organisms by controlling the pH and the body temperature.\n\n Grow levels by achieving the level objectives in time.\n\nRestart the level if you didn’t.\n\nLose if you kill your organism by restarting 3 times or by a too high/low body temperature (maintain it between 0 to 60).\n\nPRESS SPACE TO START!\n",(width/2)-320,height/2.8,800);
+  } while (!keyIsDown(32))
 }
 
 // resetGame()

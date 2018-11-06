@@ -34,7 +34,8 @@ var paddles = [];
 
 // Variable for temperature and level
 // var temp = 37;
-var level;
+var level = 1;
+var retry = 0;
 
 // Array containing the points for each macromolecules and gifts
 var points = [];
@@ -74,6 +75,7 @@ function preload() {
 //
 // Creates the balls and paddles
 function setup() {
+  console.log("I'm alive!");
   createCanvas(1035.542,640);
   // Create the interval
   timer = setInterval(generator, interval);
@@ -89,7 +91,7 @@ function setup() {
   topPaddle = new Paddle((width-395.542)/2,40,150,15,10,40,38,37,39,paddles[0]);
   bottomPaddle = new Paddle((width-395.542)/2,height-54,150,15,10,40,38,37,39,paddles[2]);
   // Create the side board
-  board = new Board(width-395.542,0,395.542,height,0,0,0,0,7.0,2.5,7.7,7.7,37,1,255,255,255,255);
+  board = new Board(width-395.542,0,395.542,height,0,0,0,0,7.0,2.5,7.7,7.7,37,level,255,255,255,255);
 }
 
 // generator()
@@ -106,6 +108,11 @@ function generator() {
 // Handles input, updates all the elements, checks for collisions
 // and displays everything.
 function draw() {
+
+  // if (level <= 0) {
+  //   board.startGame();
+  // }
+  // else {
 
   board.display();
 
@@ -136,4 +143,5 @@ function draw() {
   rightPaddle.display();
   topPaddle.display();
   bottomPaddle.display();
+// }
 }
