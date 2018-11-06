@@ -6,7 +6,7 @@
 // Board constructor
 //
 // Sets the properties with the provided arguments or defaults
-function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level) {
+function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,sectionColor) {
   this.x = x;
   this.y = y;
   this.w = w;
@@ -21,13 +21,19 @@ function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level) {
   this.phFo = phFo;
   this.temp = temp; // the value of the temperature of the organism
   this.level = level; // the level of the player
+  this.sectionColor = sectionColor;
 }
 
 // updatePH()
 //
 // Update the pH of each location
-Board.prototype.display = function(ph) {
-  // text(pHs[0],0,0);
+Board.prototype.updatePH = function() {
+  if (phFi < 6.5 || phFi > 7.5 || phS < 1.5 || phS > 3.5 || phT < 6.7 || phT > 8.7 || phFo < 6.7 || phFo > 8.7) {
+    sectionColor = 200;
+  }
+  else {
+    sectionColor = 255;
+  }
 }
 
 // updatePoints()
@@ -46,8 +52,20 @@ Board.prototype.display = function() {
   background(255);
   fill(255);
   noStroke();
-  // stroke(5,161,105);
   rect(40,40,560,560);
+
+  // Design the four sections
+  fill(this.sectionColor);
+  // First section (top)
+  triangle(0,0,640,0,(width-395.542)/2,height/2);
+  // Second section (right)
+  triangle(640,0,640,640,(width-395.542)/2,height/2);
+  // Third section (bottom)
+  triangle(640,640,0,640,(width-395.542)/2,height/2);
+  // Fourth section (left)
+  triangle(0,0,0,640,(width-395.542)/2,height/2);
+
+  // Design lines background
   stroke(5,161,105)
   fill(0);
   for (var i = 0; i < 200; i++) {
