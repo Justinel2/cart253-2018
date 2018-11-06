@@ -30,6 +30,13 @@ Board.prototype.display = function(ph) {
   // text(pHs[0],0,0);
 }
 
+// updatePoints()
+//
+// Update the points based on the total for each macromolecules
+Board.prototype.display = function(points,total) {
+
+}
+
 // display()
 //
 // Draw the board on the screen
@@ -92,5 +99,21 @@ Board.prototype.display = function() {
   fill(0);
   textSize(28);
   text("TEMPERATURE = " + temp + " °C", this.x-20,this.y+20,this.w,this.h);
+
+  // Add the information about the number of macromolecules ingested
+  // carbohydrates
+  textSize(24);
+  fill(255,238,0);
+  text("CARBOHYDRATES -> MONOSACCHARIDES\n" + this.c, this.x-20,this.y/8+100,this.w,this.h);
+  // proteins
+  fill(0,255,0);
+  text("PROTEINS -> AMINO ACIDS\n" + this.p, this.x-20,this.y/8+250,this.w,this.h);
+  // lipids
+  fill(255,0,0);
+  text("LIPIDS -> GLYCEROL,\n FATTY ACIDS,\n GLYCERIDS\n" + this.l, this.x-20,this.y/8+350,this.w,this.h);
+  // nuclear acids
+  fill(0,0,255);
+  text("NUCLEAR ACIDS ->\nNITROGENOUS BASES,\n SUGARS, PHOSPHATES\n" + this.n, this.x-20,this.y/8+500,this.w,this.h);
+
 
 }
