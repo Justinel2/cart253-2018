@@ -6,7 +6,7 @@
 // Board constructor
 //
 // Sets the properties with the provided arguments or defaults
-function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,sectionColor) {
+function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,sCFi,sCS,sCT,sCFo) {
   this.x = x;
   this.y = y;
   this.w = w;
@@ -21,18 +21,34 @@ function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,sectionColor) {
   this.phFo = phFo;
   this.temp = temp; // the value of the temperature of the organism
   this.level = level; // the level of the player
-  this.sectionColor = sectionColor;
+  this.sCFi = sCFi;
+  this.sCS = sCS;
+  this.sCT = sCT;
+  this.sCFo = sCFo;
 }
 
 // updatePH()
 //
 // Update the pH of each location
-Board.prototype.updatePH = function() {
-  if (phFi < 6.5 || phFi > 7.5 || phS < 1.5 || phS > 3.5 || phT < 6.7 || phT > 8.7 || phFo < 6.7 || phFo > 8.7) {
-    sectionColor = 200;
+Board.prototype.updatePH = function(paddle) {
+  if (this.phFi <= 6.5 || this.phFi >= 7.5) {
+    this.sCFi = 255;
+    this.c = floor(this.phFi*-1);
+  }
+  else if (this.phS <= 1.5 || this.phS >= 3.5) {
+    this.sCS = 200;
+    this.l = floor(this.phS*-1);
+  }
+  else if (this.phT <= 6.7 || this.phT >= 8.7) {
+    this.sCT = 200;
+    this.p = floor(this.phT*-1);
+  }
+  else if (this.phFo <= 6.7 || this.phFo >= 8.7) {
+    this.sCFo = 200;
+    this.n = floor(this.phT*-1);
   }
   else {
-    sectionColor = 255;
+    this.sCFi = 255;
   }
 }
 
@@ -55,14 +71,17 @@ Board.prototype.display = function() {
   rect(40,40,560,560);
 
   // Design the four sections
-  fill(this.sectionColor);
   // First section (top)
+  fill(this.sCFi);
   triangle(0,0,640,0,(width-395.542)/2,height/2);
   // Second section (right)
+  fill(this.sCS);
   triangle(640,0,640,640,(width-395.542)/2,height/2);
   // Third section (bottom)
+  fill(this.sCT);
   triangle(640,640,0,640,(width-395.542)/2,height/2);
   // Fourth section (left)
+  fill(this.sCFo);
   triangle(0,0,0,640,(width-395.542)/2,height/2);
 
   // Design lines background
@@ -88,10 +107,10 @@ Board.prototype.display = function() {
   text("lumen of\nsmall intestine\n",(width-395.542)/2,height/1.6);
   text("epithelium of\nsmall intestine",(width-395.542)/3,height/2);
   //******* PUT IN A LOOP
-  text("\n\n\npH = " + this.phFi,(width-395.542)/2,height/3);
-  text("\npH = " + this.phS,(width-395.542)/1.5,height/2);
-  text("\n\npH = " + this.phT,(width-395.542)/2,height/1.6);
-  text("\n\npH = " + this.phFo,(width-395.542)/3,height/2);
+  text("\n\n\npH1 = " + this.phFi,(width-395.542)/2,height/3);
+  text("\npH2 = " + this.phS,(width-395.542)/1.5,height/2);
+  text("\n\npH3 = " + this.phT,(width-395.542)/2,height/1.6);
+  text("\n\npH4 = " + this.phFo,(width-395.542)/3,height/2);
 
   // Add the informations about the enzymes
   fill(0);
