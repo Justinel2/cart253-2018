@@ -39,21 +39,21 @@ function preload() {
 //
 // Creates the balls and paddles
 function setup() {
-  createCanvas(640,640);
+  createCanvas(1035.542,640);
   // Create the interval
   timer = setInterval(generator, interval);
   // Create the balls
   for (var i = 0; i < numBalls; i++) {
     var r = floor(random(0,macros.length));
-    balls.push(new Ball(width/2,height/2,random(-5,5),random(-5,5),50,5,macros[r]));
+    balls.push(new Ball((width-395.542)/2,height/2,random(-5,5),random(-5,5),50,5,macros[r]));
   }
   // Create the right paddle with UP and DOWN as controls
-  rightPaddle = new Paddle(width-10,height/2,10,60,10,40,38,37,39);
+  rightPaddle = new Paddle((width-395.542)-10,height/2,10,60,10,40,38,37,39);
   // Create the left paddle with W and S as controls
   // Keycodes 83 and 87 are W and S respectively
   leftPaddle = new Paddle(0,height/2,10,60,10,40,38,37,39);
-  topPaddle = new Paddle(width/2,0,60,10,10,40,38,37,39);
-  bottomPaddle = new Paddle(width/2,height-10,60,10,10,40,38,37,39);
+  topPaddle = new Paddle((width-395.542)/2,0,60,10,10,40,38,37,39);
+  bottomPaddle = new Paddle((width-395.542)/2,height-10,60,10,10,40,38,37,39);
 }
 
 // generator()
@@ -61,7 +61,7 @@ function setup() {
 //
 function generator() {
   var g = floor(random(0,macros.length));
-  balls.push(new Ball(width/2,height/2,random(-5,5),random(-5,5),50,5,macros[g]));
+  balls.push(new Ball((width-395.542)/2,height/2,random(-5,5),random(-5,5),50,5,macros[g]));
 }
 
 

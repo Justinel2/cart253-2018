@@ -63,7 +63,7 @@ Paddle.prototype.update = function() {
   this.y = constrain(this.y,0,height-this.h);
 
   this.x += this.vx;
-  this.x = constrain(this.x,0,width-this.w);
+  this.x = constrain(this.x,0,(width-395.542)-this.w);
 }
 
 // display()
