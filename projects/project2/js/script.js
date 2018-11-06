@@ -19,11 +19,32 @@ var bottomPaddle;
 var timer;
 var interval = 2000;
 
+// Variable containing the medias
+var polyS;
+var diS;
+var monoS;
+var lipid;
+var protein;
+var nuclAcid;
+
+
+// preload()
+//
+// Loads the different media
+function preload() {
+  polyS = loadImage('assets/images/polysac_icon.png');
+  diS = loadImage('assets/images/disac_icon.png');
+  monosS = loadImage('assets/images/monosac_icon.png');
+  lipid = loadImage('assets/images/lipid_icon.png');
+  protein = loadImage('assets/images/protein_icon.png');
+  nuclAcid = loadImage('assets/images/nuclacid_icon.png');
+}
+
 // setup()
 //
 // Creates the balls and paddles
 function setup() {
-  createCanvas(640,480);
+  createCanvas(640,640);
   // Create the interval
   timer = setInterval(generator, interval);
   // Create the balls

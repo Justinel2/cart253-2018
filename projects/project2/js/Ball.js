@@ -1,7 +1,6 @@
 // Ball
 //
-// A class to define how a ball behaves. Including bouncing on the top
-// and bottom edges of the canvas, going off the left and right sides,
+// A class to define how the balls behaves. Including going off the top, bottom, left and right sides,
 // and bouncing off paddles.
 
 // Ball constructor
@@ -56,10 +55,10 @@ Ball.prototype.display = function () {
 Ball.prototype.handleCollision = function(paddle) {
   // Check if the ball overlaps the paddle on x axis
   if (this.x + this.size > paddle.x && this.x < paddle.x + paddle.w) {
-    // Reverse x velocity to bounce
-    this.vx = -this.vx;
     // Check if the ball overlaps the paddle on y axis
     if (this.y + this.size > paddle.y && this.y < paddle.y + paddle.h) {
+      // Reverse x velocity to bounce
+      this.vx = -this.vx;
       // Reverse y velocity to bounce
       this.vy = -this.vy;
     }
@@ -70,6 +69,5 @@ Ball.prototype.handleCollision = function(paddle) {
 //
 // Set position back to the middle of the screen
 Ball.prototype.reset = function () {
-  this.x = width/2;
-  this.y = height/2;
+
 }
