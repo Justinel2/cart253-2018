@@ -61,13 +61,52 @@ Ball.prototype.handleCollision = function(paddle) {
       this.vx = -this.vx;
       // Reverse y velocity to bounce
       this.vy = -this.vy;
+
+      // Check if there has been a contact from a molecule to a paddle,
+      // check which paddle and return a number
+      //
+      // If the paddle is the top one
+      if (paddle.h === 15 && paddle.y === 40) {
+        if (this.img === macros[0]){
+          this.img = macros[1];
+        }
+        else if (this.img === macros[1]) {
+          this.img = macros[5];
+        }
+      }
+      // If the paddle is the bottom one
+      else if (paddle.h === 15 && paddle.y === height-50){
+        // If the macromolecule is a polysaccharide, change the icon for a disaccharide
+        if (this.img === macros[0]){
+          this.img = macros[1];
+        }
+        // If the macromolecule is a lipid, a protein or a nuclear acid, change the icon for transparency
+        else if (this.img === macros[2] || this.img === macros[3] || this.img === macros[4]) {
+          this.img = macros[5];
+        }
+      }
+      // If the paddle is the left one
+      else if (paddle.h === 150 && paddle.x === 40) {
+        // If the macromolecule is a disaccharide or a protein, change the icon for transparency
+        if (this.img === macros[1] || this.img === macros[3]){
+          this.img = macros[5];
+        }
+      }
+      // If the paddle is the right one
+      else {
+        // If the macromolecule is a protein, change the icon for transparency
+        if (this.img === macros[3]){
+          this.img = macros[5];
+        }
+      }
     }
   }
 }
 
+
 // reset()
 //
 // Set position back to the middle of the screen
-Ball.prototype.reset = function () {
-
+Ball.prototype.reset = function() {
+  image(0);
 }

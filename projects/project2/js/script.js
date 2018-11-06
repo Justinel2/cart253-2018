@@ -36,6 +36,7 @@ function preload() {
   macros[2] = loadImage('assets/images/lipid_icon.png');
   macros[3] = loadImage('assets/images/protein_icon.png');
   macros[4] = loadImage('assets/images/nuclacid_icon.png');
+  macros[5] = loadImage('assets/images/transparent.png');
 
   // Preload images for paddles
   paddles[0] = loadImage('assets/images/topPaddle.png');
@@ -53,7 +54,7 @@ function setup() {
   timer = setInterval(generator, interval);
   // Create the balls
   for (var i = 0; i < numBalls; i++) {
-    var r = floor(random(0,macros.length));
+    var r = floor(random(0,macros.length-1));
     balls.push(new Ball((width-445.542)/2,height/2,random(-5,5),random(-5,5),50,5,macros[r]));
   }
   // Create the right and left paddle with UP and DOWN as controls
@@ -70,7 +71,7 @@ function setup() {
 //
 //
 function generator() {
-  var g = floor(random(0,macros.length));
+  var g = floor(random(0,macros.length-1));
   balls.push(new Ball((width-395.542)/2,height/2,random(-5,5),random(-5,5),50,5,macros[g]));
 }
 
@@ -100,13 +101,12 @@ function draw() {
 
   for (var i = 0; i < balls.length; i++) {
     balls[i].update();
-    if (balls[i].isOffScreen()) {
-      balls[i].reset();
-    }
+
     balls[i].handleCollision(leftPaddle);
     balls[i].handleCollision(rightPaddle);
     balls[i].handleCollision(topPaddle);
     balls[i].handleCollision(bottomPaddle);
+
     balls[i].display();
   }
 
