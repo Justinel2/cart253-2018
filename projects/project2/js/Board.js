@@ -27,10 +27,10 @@ function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,sCFi,sCS,sCT,sCFo) {
   this.sCFo = sCFo;
 }
 
-// updatePH()
+// handlePH()
 //
-// Update the pH of each location
-Board.prototype.updatePH = function(paddle) {
+// Handles the consequences due to the fluctuation of the pH at each location
+Board.prototype.handlePH = function(paddle) {
   if (this.phFi <= 6.5 || this.phFi >= 7.5) {
     this.sCFi = 255;
     this.c = floor(this.phFi*-1);
@@ -49,6 +49,15 @@ Board.prototype.updatePH = function(paddle) {
   }
   else {
     this.sCFi = 255;
+  }
+}
+
+// handleTemp()
+//
+// Updates the consequences due to the fluctuation of the body temperature
+Board.prototype.display = function() {
+  if (this.t < 0 || this.t > 60) {
+    resetGame();
   }
 }
 
@@ -135,7 +144,7 @@ Board.prototype.display = function() {
   // Add the information about the temperature
   fill(0);
   textSize(28);
-  text("TEMPERATURE = " + temp + " °C", this.x-20,this.y+20,this.w,this.h);
+  text("TEMPERATURE = " + this.temp + " °C", this.x-20,this.y+20,this.w,this.h);
 
   // Add the information about the number of macromolecules ingested
   // carbohydrates
@@ -151,6 +160,11 @@ Board.prototype.display = function() {
   // nuclear acids
   fill(0,0,255);
   text("NUCLEAR ACIDS ->\nNITROGENOUS BASES,\n SUGARS, PHOSPHATES\n" + this.n, this.x-20,this.y/8+500,this.w,this.h);
+}
 
+// resetGame()
+//
+// A function to reset the whole reset the game when lost
+Board.prototype.resetGame = function() {
 
 }

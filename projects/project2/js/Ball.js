@@ -75,7 +75,7 @@ Ball.prototype.handleCollision = function(paddle,board) {
         //If it is a disaccharide
         else if (this.img === macros[1]) {
           this.img = macros[9];
-          board.c++
+          board.c++;
         }
         // If it is a pH + 1
         else if (this.img === macros[5]) {
@@ -86,6 +86,16 @@ Ball.prototype.handleCollision = function(paddle,board) {
         else if (this.img === macros[6]) {
           this.img = macros[9];
           board.phFi--;
+        }
+        // If it is a Temp. +10
+        else if (this.img === macros[7]) {
+          this.img = macros[9];
+          board.temp += 10;
+        }
+        // If it is a Temp. -10
+        else if (this.img === macros[8]) {
+          this.img = macros[9];
+          board.temp -= 10;
         }
       }
       //
@@ -118,6 +128,16 @@ Ball.prototype.handleCollision = function(paddle,board) {
           this.img = macros[9];
           board.phT--;
         }
+        // If it is a Temp. +10
+        else if (this.img === macros[7]) {
+          this.img = macros[9];
+          board.temp += 10;
+        }
+        // If it is a Temp. -10
+        else if (this.img === macros[8]) {
+          this.img = macros[9];
+          board.temp -= 10;
+        }
       }
       //
       // **************If the paddle is the left one
@@ -141,6 +161,16 @@ Ball.prototype.handleCollision = function(paddle,board) {
           this.img = macros[9];
           board.phFo--;
         }
+        // If it is a Temp. +10
+        else if (this.img === macros[7]) {
+          this.img = macros[9];
+          board.temp += 10;
+        }
+        // If it is a Temp. -10
+        else if (this.img === macros[8]) {
+          this.img = macros[9];
+          board.temp -= 10;
+        }
       }
       //
       // **************If the paddle is the right one
@@ -159,6 +189,16 @@ Ball.prototype.handleCollision = function(paddle,board) {
         else if (this.img === macros[6]) {
           this.img = macros[9];
           board.phS--;
+        }
+        // If it is a Temp. +10
+        else if (this.img === macros[7]) {
+          this.img = macros[9];
+          board.temp += 10;
+        }
+        // If it is a Temp. -10
+        else if (this.img === macros[8]) {
+          this.img = macros[9];
+          board.temp -= 10;
         }
       }
     }
