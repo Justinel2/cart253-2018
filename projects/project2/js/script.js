@@ -1,4 +1,6 @@
-// Basic OO Pong
+// MACROMOLECULES OF LIFE
+// By Justine Lardeux 40030920
+// Adapted from Pong
 // by Pippin Barr
 //
 // A primitive implementation of Pong with no scoring system
@@ -34,7 +36,6 @@ var paddles = [];
 
 // Variable for temperature and level
 // var temp = 37;
-var level = 1;
 var retry = 0;
 
 // Array containing the points for each macromolecules and gifts
@@ -91,7 +92,7 @@ function setup() {
   topPaddle = new Paddle((width-395.542)/2,40,150,15,10,40,38,37,39,paddles[0]);
   bottomPaddle = new Paddle((width-395.542)/2,height-54,150,15,10,40,38,37,39,paddles[2]);
   // Create the side board
-  board = new Board(width-395.542,0,395.542,height,0,0,0,0,7.0,2.5,7.7,7.7,37,level,255,255,255,255);
+  board = new Board(width-395.542,0,395.542,height,0,0,0,0,7.0,2.5,7.7,7.7,37,1,255,255,255,255);
 }
 
 // generator()
@@ -109,39 +110,39 @@ function generator() {
 // and displays everything.
 function draw() {
 
-  // if (level <= 0) {
-  //   board.startGame();
-  // }
-  // else {
-
-  board.display();
-
-  leftPaddle.handleInputVertical();
-  rightPaddle.handleInputVertical();
-  topPaddle.handleInputHorizontal();
-  bottomPaddle.handleInputHorizontal();
-
-  leftPaddle.update();
-  rightPaddle.update();
-  topPaddle.update();
-  bottomPaddle.update();
-
-  for (var i = 0; i < balls.length; i++) {
-    balls[i].update();
-
-    balls[i].handleCollision(leftPaddle,board);
-    balls[i].handleCollision(rightPaddle,board);
-    balls[i].handleCollision(topPaddle,board);
-    balls[i].handleCollision(bottomPaddle,board);
-
-    balls[i].display();
+  if (board.level <= 0) {
+    board.startGame();
   }
+  else {
+    
+    board.display();
 
-  board.handlePH();
+    leftPaddle.handleInputVertical();
+    rightPaddle.handleInputVertical();
+    topPaddle.handleInputHorizontal();
+    bottomPaddle.handleInputHorizontal();
 
-  leftPaddle.display();
-  rightPaddle.display();
-  topPaddle.display();
-  bottomPaddle.display();
-// }
+    leftPaddle.update();
+    rightPaddle.update();
+    topPaddle.update();
+    bottomPaddle.update();
+
+    for (var i = 0; i < balls.length; i++) {
+      balls[i].update();
+
+      balls[i].handleCollision(leftPaddle,board);
+      balls[i].handleCollision(rightPaddle,board);
+      balls[i].handleCollision(topPaddle,board);
+      balls[i].handleCollision(bottomPaddle,board);
+
+      balls[i].display();
+    }
+
+    board.handlePH();
+
+    leftPaddle.display();
+    rightPaddle.display();
+    topPaddle.display();
+    bottomPaddle.display();
+  }
 }

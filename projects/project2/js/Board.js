@@ -73,9 +73,8 @@ Board.prototype.display = function(restart) {
 //
 // Update the points based on the total for each macromolecules
 Board.prototype.updateLevels = function(points,total) {
-  if (this.c >= this.level*2 && this.l >= this.level*2 && this.p >= this.level*2 && this.n >= level*2) {
+  if (this.c >= this.level && this.l >= this.level && this.p >= this.level && this.n >= this.level) {
     this.level++;
-    console.log(this.level);
   }
 }
 
@@ -126,11 +125,11 @@ Board.prototype.display = function() {
   text("stomac\n",(width-395.542)/1.5,height/2);
   text("lumen of\nsmall intestine\n",(width-395.542)/2,height/1.6);
   text("epithelium of\nsmall intestine",(width-395.542)/3,height/2);
-  //******* PUT IN A LOOP
-  text("\n\n\npH1 = " + this.phFi,(width-395.542)/2,height/3);
-  text("\npH2 = " + this.phS,(width-395.542)/1.5,height/2);
-  text("\n\npH3 = " + this.phT,(width-395.542)/2,height/1.6);
-  text("\n\npH4 = " + this.phFo,(width-395.542)/3,height/2);
+
+  text("\n\n\npH = " + this.phFi,(width-395.542)/2,height/3);
+  text("\npH = " + this.phS,(width-395.542)/1.5,height/2);
+  text("\n\npH = " + this.phT,(width-395.542)/2,height/1.6);
+  text("\n\npH = " + this.phFo,(width-395.542)/3,height/2+10);
 
   // Add the informations about the enzymes
   fill(0);
@@ -180,7 +179,6 @@ Board.prototype.display = function() {
 //
 // A function to prompt the user to start the game (with instructions)
 Board.prototype.startGame = function() {
-  do {
     background(255)
     fill(5,161,105);
     textSize(40);
@@ -190,12 +188,16 @@ Board.prototype.startGame = function() {
     textSize(20);
     fill(0);
     text("You control the enzymes of the human organism that are able to digest the four macromolecules of life : carbohydrates, lipids, proteins and nuclear acids.\nThese enzymes are located on the four paddles of this PONG game.\n\n You need to capture the right macromolecule with the right paddle or bounce it to the right one. You also need to maintain homeostasis in the four sections of the organisms by controlling the pH and the body temperature.\n\n Grow levels by achieving the level objectives in time.\n\nRestart the level if you didn’t.\n\nLose if you kill your organism by restarting 3 times or by a too high/low body temperature (maintain it between 0 to 60).\n\nPRESS SPACE TO START!\n",(width/2)-320,height/2.8,800);
-  } while (!keyIsDown(32))
+
+    if (keyIsDown(32)) {
+      this.level = 1;
+    }
 }
 
 // resetGame()
 //
 // A function to reset the whole reset the game when lost
 Board.prototype.resetGame = function() {
+  this.level = 1;
 
 }
