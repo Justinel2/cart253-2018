@@ -70,10 +70,10 @@ Board.prototype.display = function() {
   text("lumen of\nsmall intestine\n",(width-395.542)/2,height/1.6);
   text("epithelium of\nsmall intestine",(width-395.542)/3,height/2);
   //******* PUT IN A LOOP
-  text("\n\n\npH = " + pHs[0],(width-395.542)/2,height/3);
-  text("\npH = " + pHs[1],(width-395.542)/1.5,height/2);
-  text("\n\npH = " + pHs[2],(width-395.542)/2,height/1.6);
-  text("\n\npH = " + pHs[3],(width-395.542)/3,height/2);
+  text("\n\n\npH = " + this.phFi,(width-395.542)/2,height/3);
+  text("\npH = " + this.phS,(width-395.542)/1.5,height/2);
+  text("\n\npH = " + this.phT,(width-395.542)/2,height/1.6);
+  text("\n\npH = " + this.phFo,(width-395.542)/3,height/2);
 
   // Add the informations about the enzymes
   fill(0);

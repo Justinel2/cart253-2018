@@ -65,17 +65,31 @@ Ball.prototype.handleCollision = function(paddle,board) {
       // Check if there has been a contact from a molecule to a paddle,
       // check which paddle and return a number
       //
-      // If the paddle is the top one
+      //
+      // **************If the paddle is the top one
       if (paddle.h === 15 && paddle.y === 40) {
+        //If it is a polysaccharide
         if (this.img === macros[0]){
           this.img = macros[1];
         }
+        //If it is a disaccharide
         else if (this.img === macros[1]) {
-          this.img = macros[5];
+          this.img = macros[9];
           board.c++
         }
+        // If it is a pH + 1
+        else if (this.img === macros[5]) {
+          this.img = macros[9];
+          board.phFi++;
+        }
+        // If it is a pH - 1
+        else if (this.img === macros[6]) {
+          this.img = macros[9];
+          board.phFi--;
+        }
       }
-      // If the paddle is the bottom one
+      //
+      // **************If the paddle is the bottom one
       else if (paddle.h === 15 && paddle.y === height-50){
         // If the macromolecule is a polysaccharide, change the icon for a disaccharide
         if (this.img === macros[0]){
@@ -83,36 +97,68 @@ Ball.prototype.handleCollision = function(paddle,board) {
         }
         // If the macromolecule is a lipid, a protein or a nuclear acid, change the icon for transparency
         else if (this.img === macros[2]) {
-          this.img = macros[5];
+          this.img = macros[9];
           board.l++;
         }
         else if (this.img === macros[3]) {
-          this.img = macros[5];
+          this.img = macros[9];
           board.p++;
         }
         else if (this.img === macros[4]) {
-          this.img = macros[5];
+          this.img = macros[9];
           board.n++;
         }
+        // If it is a pH + 1
+        else if (this.img === macros[5]) {
+          this.img = macros[9];
+          board.phT++;
+        }
+        // If it is a pH - 1
+        else if (this.img === macros[6]) {
+          this.img = macros[9];
+          board.phT--;
+        }
       }
-      // If the paddle is the left one
+      //
+      // **************If the paddle is the left one
       else if (paddle.h === 150 && paddle.x === 40) {
         // If the macromolecule is a disaccharide or a protein, change the icon for transparency
         if (this.img === macros[1]){
-          this.img = macros[5];
+          this.img = macros[9];
           board.c++;
         }
         else if (this.img === macros[3]) {
-          this.img = macros[5];
+          this.img = macros[9];
           board.p++;
         }
+        // If it is a pH + 1
+        else if (this.img === macros[5]) {
+          this.img = macros[9];
+          board.phFo++;
+        }
+        // If it is a pH - 1
+        else if (this.img === macros[6]) {
+          this.img = macros[9];
+          board.phFo--;
+        }
       }
-      // If the paddle is the right one
+      //
+      // **************If the paddle is the right one
       else {
         // If the macromolecule is a protein, change the icon for transparency
         if (this.img === macros[3]){
-          this.img = macros[5];
+          this.img = macros[9];
           board.p++;
+        }
+        // If it is a pH + 1
+        else if (this.img === macros[5]) {
+          this.img = macros[9];
+          board.phS++;
+        }
+        // If it is a pH - 1
+        else if (this.img === macros[6]) {
+          this.img = macros[9];
+          board.phS--;
         }
       }
     }
