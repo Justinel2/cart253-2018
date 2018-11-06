@@ -21,6 +21,7 @@ function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,sCFi,sCS,sCT,sCFo) {
   this.phFo = phFo;
   this.temp = temp; // the value of the temperature of the organism
   this.level = level; // the level of the player
+  this.restart = restart;
   this.sCFi = sCFi;
   this.sCS = sCS;
   this.sCT = sCT;
@@ -63,9 +64,9 @@ Board.prototype.handlePH = function(paddle) {
 // handleTemp()
 //
 // Updates the consequences due to the fluctuation of the body temperature
-Board.prototype.display = function(restart) {
+Board.prototype.display = function() {
   if (this.t < 0 || this.t > 60) {
-    restart++;
+    this.restart++;
   }
 }
 
@@ -179,6 +180,7 @@ Board.prototype.display = function() {
 //
 // A function to prompt the user to start the game (with instructions)
 Board.prototype.startGame = function() {
+    this.level = 0;
     background(255)
     fill(5,161,105);
     textSize(40);
@@ -199,5 +201,19 @@ Board.prototype.startGame = function() {
 // A function to reset the whole reset the game when lost
 Board.prototype.resetGame = function() {
   this.level = 1;
-
+  background(255)
+  fill(5,161,105);
+  textSize(40);
+  textFont(black);
+  textAlign(CENTER,CENTER);
+  text("YOU LOST...\n\n",(width/2)-320,50,800);
+  if (this.restart >= 3) {
+    startGame();
+  }
+  else {
+    text("...RESTART? (PRESS SPACE)",(width/2)-320,200,800)
+    if (keyIsDown(32)) {
+      this.level = 1;
+    }
+  }
 }
