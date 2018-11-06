@@ -31,6 +31,12 @@ var macros = [];
 // Array containing the paddles
 var paddles = [];
 
+// Array containing the pHs
+var pHs = [];
+
+// Array containing the informations about the enzymes
+var enzymes = ["SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE ","PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN","PANCREATIC AMYLASE / CARBOPEPTIDASE / NUCLEASE / LIPASE", "DISACCHARIDASE / DIPEPTIDASE, CARBOXYPEPTIDASE + AMINOPEPTIDASE"];
+
 // preload()
 //
 // Loads the different media
@@ -91,6 +97,7 @@ function generator() {
 // Handles input, updates all the elements, checks for collisions
 // and displays everything.
 function draw() {
+  // Design the background of the canvas
   background(255);
   fill(255);
   stroke(5,161,105);
@@ -99,6 +106,21 @@ function draw() {
   fill(0);
   line(0,0,640,640);
   line(0,640,640,0);
+  textSize(32);
+
+  // Add the informations about the enzymes
+  textSize(19);
+  text(enzymes[0],(width-395.542)/2,30);
+  rotate(PI/2);
+  text(enzymes[1],height/2,-610);
+  rotate(PI/2);
+  text(enzymes[2],-height/2,-610);
+  rotate(PI/2);
+  text(enzymes[3],-height/2,30)
+  rotate(PI/2);
+  textAlign(CENTER);
+  noStroke();
+  textFont(extraBold);
 
   leftPaddle.handleInputVertical();
   rightPaddle.handleInputVertical();
