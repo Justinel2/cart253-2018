@@ -6,14 +6,14 @@
 // Ball constructor
 //
 // Sets the properties with the provided arguments
-function Ball(x,y,vx,vy,size,speed) {
+function Ball(x,y,vx,vy,size,speed,img) {
   this.x = x;
   this.y = y;
-  this.img = img;
   this.vx = vx;
   this.vy = vy;
   this.size = size;
   this.speed = speed;
+  this.img = img;
 }
 
 // update()
@@ -45,9 +45,7 @@ Ball.prototype.isOffScreen = function () {
 //
 // Draw the ball as an icon on the screen
 Ball.prototype.display = function () {
-  fill(255);
-  image(this.img.this.x,this.y,this.size,this.size);
-  // rect(this.x,this.y,this.size,this.size);
+  image(this.img,this.x,this.y,this.size,this.size);
 }
 
 // handleCollision(paddle)

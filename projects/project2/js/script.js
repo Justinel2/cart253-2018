@@ -17,22 +17,22 @@ var rightPaddle;
 var topPaddle;
 var bottomPaddle;
 var timer;
-var interval = 2000;
+var interval = 5000;
 
-// Variable containing the icons
-var balls = [];
+// Variable containing the macromolecule icons
+var macros = [];
 
 
 // preload()
 //
 // Loads the different media
 function preload() {
-  balls[1] = loadImage('assets/images/polysac_icon.png');
-  balls[2]= loadImage('assets/images/disac_icon.png');
-  balls[3] = loadImage('assets/images/monosac_icon.png');
-  balls[4] = loadImage('assets/images/lipid_icon.png');
-  balls[5] = loadImage('assets/images/protein_icon.png');
-  balls[5] = loadImage('assets/images/nuclacid_icon.png');
+  macros[0] = loadImage('assets/images/polysac_icon.png');
+  macros[1]= loadImage('assets/images/disac_icon.png');
+  macros[2] = loadImage('assets/images/monosac_icon.png');
+  macros[3] = loadImage('assets/images/lipid_icon.png');
+  macros[4] = loadImage('assets/images/protein_icon.png');
+  macros[5] = loadImage('assets/images/nuclacid_icon.png');
 }
 
 // setup()
@@ -44,7 +44,8 @@ function setup() {
   timer = setInterval(generator, interval);
   // Create the balls
   for (var i = 0; i < numBalls; i++) {
-    balls.push(new Ball(width/2,height/2,random(-5,5),random(-5,5),10,5));
+    var r = floor(random(0,macros.length));
+    balls.push(new Ball(width/2,height/2,random(-5,5),random(-5,5),50,5,macros[r]));
   }
   // Create the right paddle with UP and DOWN as controls
   rightPaddle = new Paddle(width-10,height/2,10,60,10,40,38,37,39);
@@ -59,7 +60,8 @@ function setup() {
 //
 //
 function generator() {
-  balls.push(new Ball(width/2,height/2,random(-5,5),random(-5,5),10,5));
+  var g = floor(random(0,macros.length));
+  balls.push(new Ball(width/2,height/2,random(-5,5),random(-5,5),50,5,macros[g]));
 }
 
 
