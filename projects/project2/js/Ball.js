@@ -52,7 +52,7 @@ Ball.prototype.display = function () {
 //
 // Check if this ball overlaps the paddle passed as an argument
 // and if so reverse x velocity to bounce
-Ball.prototype.handleCollision = function(paddle) {
+Ball.prototype.handleCollision = function(paddle,board) {
   // Check if the ball overlaps the paddle on x axis
   if (this.x + this.size > paddle.x && this.x < paddle.x + paddle.w) {
     // Check if the ball overlaps the paddle on y axis
@@ -72,6 +72,7 @@ Ball.prototype.handleCollision = function(paddle) {
         }
         else if (this.img === macros[1]) {
           this.img = macros[5];
+          board.c++
         }
       }
       // If the paddle is the bottom one
@@ -81,15 +82,29 @@ Ball.prototype.handleCollision = function(paddle) {
           this.img = macros[1];
         }
         // If the macromolecule is a lipid, a protein or a nuclear acid, change the icon for transparency
-        else if (this.img === macros[2] || this.img === macros[3] || this.img === macros[4]) {
+        else if (this.img === macros[2]) {
           this.img = macros[5];
+          board.l++;
+        }
+        else if (this.img === macros[3]) {
+          this.img = macros[5]
+          board.p++;
+        }
+        else if (this.img === macros[4]) {
+          this.img = macros[5];
+          board.n++;
         }
       }
       // If the paddle is the left one
       else if (paddle.h === 150 && paddle.x === 40) {
         // If the macromolecule is a disaccharide or a protein, change the icon for transparency
-        if (this.img === macros[1] || this.img === macros[3]){
+        if (this.img === macros[1]){
           this.img = macros[5];
+          board.c++;
+        }
+        else if (this.img === macros[3]) {
+          this.img = macros[5];
+          board.p++;
         }
       }
       // If the paddle is the right one
@@ -97,6 +112,7 @@ Ball.prototype.handleCollision = function(paddle) {
         // If the macromolecule is a protein, change the icon for transparency
         if (this.img === macros[3]){
           this.img = macros[5];
+          board.p++;
         }
       }
     }

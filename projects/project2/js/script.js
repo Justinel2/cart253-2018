@@ -64,7 +64,7 @@ function setup() {
   topPaddle = new Paddle((width-395.542)/2,40,150,15,10,40,38,37,39,paddles[0]);
   bottomPaddle = new Paddle((width-395.542)/2,height-50,150,15,10,40,38,37,39,paddles[2]);
   // Create the side board
-  board = new Board((width-395.542),0,395.542,height);
+  board = new Board((width-395.542),0,395.542,height,0,0,0,0);
 }
 
 // generator()
@@ -102,10 +102,10 @@ function draw() {
   for (var i = 0; i < balls.length; i++) {
     balls[i].update();
 
-    balls[i].handleCollision(leftPaddle);
-    balls[i].handleCollision(rightPaddle);
-    balls[i].handleCollision(topPaddle);
-    balls[i].handleCollision(bottomPaddle);
+    balls[i].handleCollision(leftPaddle,board);
+    balls[i].handleCollision(rightPaddle,board);
+    balls[i].handleCollision(topPaddle,board);
+    balls[i].handleCollision(bottomPaddle,board);
 
     balls[i].display();
   }
