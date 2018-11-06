@@ -33,7 +33,7 @@ var macros = [];
 var paddles = [];
 
 // Array containing the pHs
-var pHs = [];
+var pHs = [7.0,2.5,7.7,7.7];
 
 // Variable for temperature and level
 var temp;

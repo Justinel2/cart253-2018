@@ -25,14 +25,15 @@ function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level) {
 
 // updatePH()
 //
-//
+// Update the pH of each location
+Board.prototype.display = function(ph) {
+  // text(pHs[0],0,0);
+}
 
 // display()
 //
 // Draw the board on the screen
 Board.prototype.display = function() {
-  fill(0);
-  rect(this.x,this.y,this.w,this.h);
 
   // Design the background of the canvas
   background(255);
@@ -51,8 +52,30 @@ Board.prototype.display = function() {
   line(0,640,640,0);
   textSize(32);
 
+  // Draw the board on the screen
+  fill(0);
+  rect(this.x,this.y,this.w,this.h);
+
+  // Display the information about the pH
+  noStroke();
+  textSize(16);
+  textFont(bold);
+  fill(5,161,105);
+  text("oral cavity,\nlarynx,\nesophagus\n",(width-395.542)/2,height/3);
+  text("stomac\n",(width-395.542)/1.5,height/2);
+  text("lumen of\nsmall intestine\n",(width-395.542)/2,height/1.6);
+  text("epithelium of\nsmall intestine",(width-395.542)/3,height/2);
+  //******* PUT IN A LOOP
+  text("\n\n\npH = " + pHs[0],(width-395.542)/2,height/3);
+  text("\npH = " + pHs[1],(width-395.542)/1.5,height/2);
+  text("\n\npH = " + pHs[2],(width-395.542)/2,height/1.6);
+  text("\n\npH = " + pHs[3],(width-395.542)/3,height/2);
+
+
   // Add the informations about the enzymes
+  fill(0);
   textSize(19);
+  textFont(black);
   text(enzymes[0],(width-395.542)/2,30);
   rotate(PI/2);
   text(enzymes[1],height/2,-610);
@@ -62,7 +85,6 @@ Board.prototype.display = function() {
   text(enzymes[3],-height/2,30)
   rotate(PI/2);
   textAlign(CENTER);
-  noStroke();
-  textFont(extraBold);
+
 
 }
