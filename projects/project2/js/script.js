@@ -19,25 +19,20 @@ var bottomPaddle;
 var timer;
 var interval = 2000;
 
-// Variable containing the medias
-var polyS;
-var diS;
-var monoS;
-var lipid;
-var protein;
-var nuclAcid;
+// Variable containing the icons
+var balls = [];
 
 
 // preload()
 //
 // Loads the different media
 function preload() {
-  polyS = loadImage('assets/images/polysac_icon.png');
-  diS = loadImage('assets/images/disac_icon.png');
-  monosS = loadImage('assets/images/monosac_icon.png');
-  lipid = loadImage('assets/images/lipid_icon.png');
-  protein = loadImage('assets/images/protein_icon.png');
-  nuclAcid = loadImage('assets/images/nuclacid_icon.png');
+  balls[1] = loadImage('assets/images/polysac_icon.png');
+  balls[2]= loadImage('assets/images/disac_icon.png');
+  balls[3] = loadImage('assets/images/monosac_icon.png');
+  balls[4] = loadImage('assets/images/lipid_icon.png');
+  balls[5] = loadImage('assets/images/protein_icon.png');
+  balls[5] = loadImage('assets/images/nuclacid_icon.png');
 }
 
 // setup()
