@@ -20,6 +20,7 @@ var board;
 var timer;
 var interval = 5000;
 
+
 // Variable representing the fonts
 var black;
 var extraBold;
@@ -33,6 +34,13 @@ var paddles = [];
 
 // Array containing the pHs
 var pHs = [];
+
+// Variable for temperature and level
+var temp;
+var level;
+
+// Array containing the points for each macromolecules
+var points = [];
 
 // Array containing the informations about the enzymes
 var enzymes = ["SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE ","PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN","PANCREATIC AMYLASE / CARBOPEPTIDASE / NUCLEASE / LIPASE", "DISACCHARIDASE / DIPEPTIDASE, CARBOXYPEPTIDASE + AMINOPEPTIDASE"];
@@ -80,7 +88,7 @@ function setup() {
   topPaddle = new Paddle((width-395.542)/2,40,150,15,10,40,38,37,39,paddles[0]);
   bottomPaddle = new Paddle((width-395.542)/2,height-54,150,15,10,40,38,37,39,paddles[2]);
   // Create the side board
-  board = new Board((width-395.542),0,395.542,height,0,0,0,0);
+  board = new Board((width-395.542),0,395.542,height,0,0,0,0,pHs[0],pHs[1],pHs[2],pHs[3],temp,level);
 }
 
 // generator()
@@ -97,30 +105,8 @@ function generator() {
 // Handles input, updates all the elements, checks for collisions
 // and displays everything.
 function draw() {
-  // Design the background of the canvas
-  background(255);
-  fill(255);
-  stroke(5,161,105);
-  rect(40,40,560,560);
-  stroke(0)
-  fill(0);
-  line(0,0,640,640);
-  line(0,640,640,0);
-  textSize(32);
 
-  // Add the informations about the enzymes
-  textSize(19);
-  text(enzymes[0],(width-395.542)/2,30);
-  rotate(PI/2);
-  text(enzymes[1],height/2,-610);
-  rotate(PI/2);
-  text(enzymes[2],-height/2,-610);
-  rotate(PI/2);
-  text(enzymes[3],-height/2,30)
-  rotate(PI/2);
-  textAlign(CENTER);
-  noStroke();
-  textFont(extraBold);
+  board.display();
 
   leftPaddle.handleInputVertical();
   rightPaddle.handleInputVertical();
@@ -147,5 +133,4 @@ function draw() {
   rightPaddle.display();
   topPaddle.display();
   bottomPaddle.display();
-  board.display();
 }

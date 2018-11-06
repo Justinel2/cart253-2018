@@ -87,7 +87,7 @@ Ball.prototype.handleCollision = function(paddle,board) {
           board.l++;
         }
         else if (this.img === macros[3]) {
-          this.img = macros[5]
+          this.img = macros[5];
           board.p++;
         }
         else if (this.img === macros[4]) {

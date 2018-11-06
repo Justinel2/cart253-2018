@@ -28,7 +28,6 @@ function Paddle(x,y,w,h,speed,downKey,upKey,leftKey,rightKey,img) {
 Paddle.prototype.handleInputVertical = function() {
   if (keyIsDown(this.upKey)) {
     this.vy = -this.speed;
-    console.log(this.vy);
   }
   else if (keyIsDown(this.downKey)) {
     this.vy = this.speed;
@@ -45,7 +44,6 @@ Paddle.prototype.handleInputVertical = function() {
 Paddle.prototype.handleInputHorizontal = function() {
   if (keyIsDown(this.leftKey)) {
     this.vx = -this.speed;
-    console.log(this.vx);
   }
   else if (keyIsDown(this.rightKey)) {
     this.vx = this.speed;
