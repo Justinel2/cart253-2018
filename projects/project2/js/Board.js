@@ -6,7 +6,7 @@
 // Board constructor
 //
 // Sets the properties with the provided arguments or defaults
-function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,sCFi,sCS,sCT,sCFo) {
+function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,restart,sCFi,sCS,sCT,sCFo) {
   this.x = x;
   this.y = y;
   this.w = w;
@@ -155,7 +155,8 @@ Board.prototype.display = function() {
   // Add the information about the temperature
   fill(0);
   textSize(28);
-  text("TEMPERATURE = " + this.temp + " °C", this.x,this.y+20,this.w,this.h);
+  text("TEMPERATURE = " + this.temp + " °C", this.x,this.y-280,this.w,this.h);
+  console.log(this.x, this.y);
 
   // Add the information about the level
   text("LV: " + this.level,100,height/8);
@@ -164,16 +165,16 @@ Board.prototype.display = function() {
   // carbohydrates
   textSize(24);
   fill(255,238,0);
-  text("CARBOHYDRATES -> MONOSACCHARIDES\n" + this.c, this.x,this.y/8+100,this.w,this.h);
+  text("CARBOHYDRATES -> MONOSACCHARIDES\n" + this.c, this.x,(this.y/8+100)-300,this.w,this.h);
   // proteins
   fill(0,255,0);
-  text("PROTEINS -> AMINO ACIDS\n" + this.p, this.x,this.y/8+250,this.w,this.h);
+  text("PROTEINS -> AMINO ACIDS\n" + this.p, this.x,this.y-75,this.w,this.h);
   // lipids
   fill(255,0,0);
-  text("LIPIDS -> GLYCEROL,\n FATTY ACIDS,\n GLYCERIDS\n" + this.l, this.x,this.y/8+350,this.w,this.h);
+  text("LIPIDS -> GLYCEROL,\n FATTY ACIDS,\n GLYCERIDS\n" + this.l, this.x,this.y/8+25,this.w,this.h);
   // nuclear acids
   fill(0,0,255);
-  text("NUCLEAR ACIDS ->\nNITROGENOUS BASES,\n SUGARS, PHOSPHATES\n" + this.n, this.x,this.y/8+500,this.w,this.h);
+  text("NUCLEAR ACIDS ->\nNITROGENOUS BASES,\n SUGARS, PHOSPHATES\n" + this.n, this.x,this.y/8+175,this.w,this.h);
 }
 
 // startGame()

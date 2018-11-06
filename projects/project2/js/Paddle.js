@@ -19,7 +19,6 @@ function Paddle(x,y,w,h,speed,downKey,upKey,leftKey,rightKey,img) {
   this.leftKey = leftKey;
   this.rightKey = rightKey;
   this.img = img;
-  this.alpha = alpha;
 }
 
 // handleInputVertical()
@@ -71,5 +70,4 @@ Paddle.prototype.update = function() {
 // Draw the paddle as a rectangle on the screen
 Paddle.prototype.display = function() {
   image(this.img,this.x,this.y,this.w,this.h);
-  tint(255, this.alpha);
 }
