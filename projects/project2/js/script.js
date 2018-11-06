@@ -39,7 +39,7 @@ var pHs = [7.0,2.5,7.7,7.7];
 var temp = 37;
 var level;
 
-// Array containing the points for each macromolecules
+// Array containing the points for each macromolecules and gifts
 var points = [];
 
 // Array containing the informations about the enzymes
@@ -55,7 +55,11 @@ function preload() {
   macros[2] = loadImage('assets/images/lipid_icon.png');
   macros[3] = loadImage('assets/images/protein_icon.png');
   macros[4] = loadImage('assets/images/nuclacid_icon.png');
-  macros[5] = loadImage('assets/images/transparent.png');
+  macros[5] = loadImage('assets/images/pH_plusOne.png');
+  macros[6] = loadImage('assets/images/pH_minusOne.png');
+  macros[7] = loadImage('assets/images/T_plus10.png');
+  macros[8] = loadImage('assets/images/T_minus10.png');
+  macros[9] = loadImage('assets/images/transparent.png');
 
   // Preload images for paddles
   paddles[0] = loadImage('assets/images/topPaddle.png');
