@@ -20,6 +20,11 @@ var board;
 var timer;
 var interval = 5000;
 
+// Variable representing the fonts
+var black;
+var extraBold;
+var bold;
+
 // Array containing the macromolecule icons
 var macros = [];
 
@@ -43,6 +48,11 @@ function preload() {
   paddles[1] = loadImage('assets/images/rightPaddle.png');
   paddles[2] = loadImage('assets/images/bottomPaddle.png');
   paddles[3] = loadImage('assets/images/leftPaddle.png');
+
+  // Preload font
+  black = loadFont("assets/fonts/WorkSans-Black.ttf");
+  extraBold = loadFont("assets/fonts/WorkSans-ExtraBold.ttf");
+  bold = loadFont("assets/fonts/WorkSans-Bold.ttf");
 }
 
 // setup()
@@ -58,11 +68,11 @@ function setup() {
     balls.push(new Ball((width-445.542)/2,height/2,random(-5,5),random(-5,5),50,5,macros[r]));
   }
   // Create the right and left paddle with UP and DOWN as controls
-  rightPaddle = new Paddle((width-445.542),height/2,15,150,10,40,38,37,39,paddles[1]);
+  rightPaddle = new Paddle((width-449.542),height/2,15,150,10,40,38,37,39,paddles[1]);
   leftPaddle = new Paddle(40,height/2,15,150,10,40,38,37,39,paddles[3]);
   // Create the top and bottom paddle with LEFT and RIGHT as controls
   topPaddle = new Paddle((width-395.542)/2,40,150,15,10,40,38,37,39,paddles[0]);
-  bottomPaddle = new Paddle((width-395.542)/2,height-50,150,15,10,40,38,37,39,paddles[2]);
+  bottomPaddle = new Paddle((width-395.542)/2,height-54,150,15,10,40,38,37,39,paddles[2]);
   // Create the side board
   board = new Board((width-395.542),0,395.542,height,0,0,0,0);
 }
@@ -82,9 +92,10 @@ function generator() {
 // and displays everything.
 function draw() {
   background(255);
-  // background(5,161,105);
-  // fill(255);
-  // rect(40,40,560,560);
+  fill(255);
+  stroke(5,161,105);
+  rect(40,40,560,560);
+  stroke(0)
   fill(0);
   line(0,0,640,640);
   line(0,640,640,0);
