@@ -38,10 +38,10 @@ function preload() {
   macros[4] = loadImage('assets/images/nuclacid_icon.png');
 
   // Preload images for paddles
-  paddle[0] = loadImage('assets/images/topPaddle.png');
-  paddle[1] = loadImage('assets/images/rightPaddle.png');
-  paddle[2] = loadImage('assets/images/bottomPaddle.png');
-  paddle[3] = loadImage('assets/images/rightPaddle.png');
+  paddles[0] = loadImage('assets/images/topPaddle.png');
+  paddles[1] = loadImage('assets/images/rightPaddle.png');
+  paddles[2] = loadImage('assets/images/bottomPaddle.png');
+  paddles[3] = loadImage('assets/images/leftPaddle.png');
 }
 
 // setup()
@@ -56,13 +56,13 @@ function setup() {
     var r = floor(random(0,macros.length));
     balls.push(new Ball((width-445.542)/2,height/2,random(-5,5),random(-5,5),50,5,macros[r]));
   }
-  // Create the right paddle with UP and DOWN as controls
-  rightPaddle = new Paddle((width-445.542),height/2,10,100,10,40,38,37,39);
-  // Create the left paddle with W and S as controls
-  // Keycodes 83 and 87 are W and S respectively
-  leftPaddle = new Paddle(40,height/2,10,100,10,40,38,37,39);
-  topPaddle = new Paddle((width-395.542)/2,40,100,10,10,40,38,37,39);
-  bottomPaddle = new Paddle((width-395.542)/2,height-50,100,10,10,40,38,37,39);
+  // Create the right and left paddle with UP and DOWN as controls
+  rightPaddle = new Paddle((width-445.542),height/2,15,150,10,40,38,37,39,paddles[1]);
+  leftPaddle = new Paddle(40,height/2,15,150,10,40,38,37,39,paddles[3]);
+  // Create the top and bottom paddle with LEFT and RIGHT as controls
+  topPaddle = new Paddle((width-395.542)/2,40,150,15,10,40,38,37,39,paddles[0]);
+  bottomPaddle = new Paddle((width-395.542)/2,height-50,150,15,10,40,38,37,39,paddles[2]);
+  // Create the side board
   board = new Board((width-395.542),0,395.542,height);
 }
 

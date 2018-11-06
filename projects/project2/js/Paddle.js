@@ -6,7 +6,7 @@
 // Paddle constructor
 //
 // Sets the properties with the provided arguments or defaults
-function Paddle(x,y,w,h,speed,downKey,upKey,leftKey,rightKey) {
+function Paddle(x,y,w,h,speed,downKey,upKey,leftKey,rightKey,img) {
   this.x = x;
   this.y = y;
   this.vx = 0;
@@ -18,6 +18,7 @@ function Paddle(x,y,w,h,speed,downKey,upKey,leftKey,rightKey) {
   this.upKey = upKey;
   this.leftKey = leftKey;
   this.rightKey = rightKey;
+  this.img = img;
 }
 
 // handleInputVertical()
@@ -70,6 +71,5 @@ Paddle.prototype.update = function() {
 //
 // Draw the paddle as a rectangle on the screen
 Paddle.prototype.display = function() {
-  fill(255);
-  rect(this.x,this.y,this.w,this.h);
+  image(this.img,this.x,this.y,this.w,this.h);
 }
