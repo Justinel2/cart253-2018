@@ -6,7 +6,7 @@
 // Board constructor
 //
 // Sets the properties with the provided arguments or defaults
-function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,sCFi,sCS,sCT,sCFo,eFi,eS,eT,eFo,max) {
+function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,sCFi,sCS,sCT,sCFo,eFi,eS,eT,eFo,max,interval,control) {
   this.x = x;
   this.y = y;
   this.w = w;
@@ -30,6 +30,8 @@ function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,sCFi,sCS,sCT,sCFo,eF
   this.eT = eT;
   this.eFo = eFo;
   this.max = max;
+  this.interval = interval;
+  this.control = control;
 }
 
 // handlePH()
@@ -94,11 +96,12 @@ Board.prototype.handleTemp = function() {
 // updateLevel()
 //
 // Update the points based on the total for each macromolecules
-Board.prototype.updateLevel = function(totalMacros) {
+Board.prototype.updateLevel = function() {
   if (this.c >= this.level && this.l >= this.level && this.p >= this.level && this.n >= this.level) {
     this.level++;
-    totalMacros = 0;
+    this.control = 1;
     this.max -= this.level;
+    this.interval -= this.level*20
   }
 }
 
@@ -208,6 +211,10 @@ Board.prototype.display = function(totalMacros) {
 Board.prototype.startGame = function() {
     this.level = 0;
     this.restart = 0;
+    this.c = 0;
+    this.p = 0;
+    this.l = 0;
+    this.n = 0;
     background(255)
     fill(5,161,105);
     textSize(40);

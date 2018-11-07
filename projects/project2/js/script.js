@@ -73,13 +73,10 @@ function preload() {
 function setup() {
   createCanvas(1035.542,640);
 
-  // Create the timer that generates the macromolecules and gifts
-  timer = setInterval(generator, interval);
-
   // Create the balls
   for (var i = 0; i < numBalls; i++) {
     var r = floor(random(0,macros.length-1));
-    balls.push(new Ball((width-445.542)/2,height/2,random(-5,5),random(-5,5),50,5,macros[r]));
+    balls.push(new Ball((width-445.542)/2,height/2,random(-7,7),random(-7,7),50,5,macros[r]));
   }
   // Create the right and left paddle with UP and DOWN as controls
   rightPaddle = new Paddle((width-449.542),height/2,15,150,10,40,38,37,39,paddles[1]);
@@ -88,7 +85,10 @@ function setup() {
   topPaddle = new Paddle((width-395.542)/2,40,150,15,10,40,38,37,39,paddles[0]);
   bottomPaddle = new Paddle((width-395.542)/2,height-54,150,15,10,40,38,37,39,paddles[2]);
   // Create the side board
-  board = new Board(width-395.542,0,395.542,height,0,0,0,0,7.0,2.5,7.7,7.7,37,0,255,255,255,255,1,1,1,1,10);
+  board = new Board(width-395.542,0,395.542,height,0,0,0,0,7.0,2.5,7.7,7.7,37,0,255,255,255,255,1,1,1,1,50,5000,0);
+
+  // Create the timer that generates the macromolecules and gifts
+  timer = setInterval(generator, board.interval);
 }
 
 // generator()
@@ -137,7 +137,11 @@ function draw() {
       balls[i].display();
     }
 
-    board.updateLevel(totalMacros);
+    board.updateLevel();
+    if (board.control === 1) {
+      totalMacros = 2;
+      board.control = 0;
+    }
 
     board.handlePH();
     // board.handleTemp();
@@ -149,7 +153,6 @@ function draw() {
 
     if (board.temp < 0 || board.temp > 60 || totalMacros >= board.max) {
       board.resetGame();
-      board.control = 1;
     }
   }
 }
