@@ -22,23 +22,19 @@ var board;
 var timer;
 var interval = 5000;
 
+// The total of macromolecules generated
+var totalMacros = 2;
 
 // Variable representing the fonts
 var black;
 var extraBold;
 var bold;
 
-// Array containing the macromolecule icons
+// Array containing the macromolecule icons and gifts
 var macros = [];
 
 // Array containing the paddles
 var paddles = [];
-
-// Variable for the amount of retry
-var retry = 0;
-
-// Array containing the points for each macromolecules and gifts
-var points = [];
 
 // Array containing the informations about the enzymes
 var enzymes = ["SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE ","PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN","PANCREATIC AMYLASE / CARBOPEPTIDASE / NUCLEASE / LIPASE", "DISACCHARIDASE / DIPEPTIDASE, CARBOXYPEPTIDASE + AMINOPEPTIDASE"];
@@ -75,10 +71,11 @@ function preload() {
 //
 // Creates the balls and paddles
 function setup() {
-  console.log("I'm alive!");
   createCanvas(1035.542,640);
-  // Create the interval
+
+  // Create the timer that generates the macromolecules and gifts
   timer = setInterval(generator, interval);
+
   // Create the balls
   for (var i = 0; i < numBalls; i++) {
     var r = floor(random(0,macros.length-1));
@@ -91,7 +88,7 @@ function setup() {
   topPaddle = new Paddle((width-395.542)/2,40,150,15,10,40,38,37,39,paddles[0]);
   bottomPaddle = new Paddle((width-395.542)/2,height-54,150,15,10,40,38,37,39,paddles[2]);
   // Create the side board
-  board = new Board(width-395.542,0,395.542,height,0,0,0,0,7.0,2.5,7.7,7.7,60,0,0,255,255,255,255,1,1,1,1);
+  board = new Board(width-395.542,0,395.542,height,0,0,0,0,7.0,2.5,7.7,7.7,37,0,255,255,255,255,1,1,1,1,10);
 }
 
 // generator()
@@ -100,6 +97,7 @@ function setup() {
 function generator() {
   var g = floor(random(0,macros.length-1));
   balls.push(new Ball((width-395.542)/2,height/2,random(-5,5),random(-5,5),50,5,macros[g]));
+  totalMacros++;
 }
 
 
@@ -108,13 +106,15 @@ function generator() {
 // Handles input, updates all the elements, checks for collisions
 // and displays everything.
 function draw() {
+  console.log(board.restart)
 
   if (board.level === 0) {
     board.startGame();
+    totalMacros = 2;
   }
   else {
 
-    board.display();
+    board.display(totalMacros);
 
     leftPaddle.handleInputVertical();
     rightPaddle.handleInputVertical();
@@ -137,7 +137,7 @@ function draw() {
       balls[i].display();
     }
 
-    board.updateLevel();
+    board.updateLevel(totalMacros);
 
     board.handlePH();
     // board.handleTemp();
@@ -147,8 +147,9 @@ function draw() {
     topPaddle.display();
     bottomPaddle.display();
 
-    if (board.temp < 0 || board.temp > 60) {
+    if (board.temp < 0 || board.temp > 60 || totalMacros >= board.max) {
       board.resetGame();
+      board.control = 1;
     }
   }
 }

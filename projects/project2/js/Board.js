@@ -6,7 +6,7 @@
 // Board constructor
 //
 // Sets the properties with the provided arguments or defaults
-function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,restart,sCFi,sCS,sCT,sCFo,eFi,eS,eT,eFo) {
+function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,sCFi,sCS,sCT,sCFo,eFi,eS,eT,eFo,max) {
   this.x = x;
   this.y = y;
   this.w = w;
@@ -21,7 +21,6 @@ function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,restart,sCFi,sCS,sCT
   this.phFo = phFo;
   this.temp = temp; // the value of the temperature of the organism
   this.level = level; // the level of the player
-  this.restart = restart;
   this.sCFi = sCFi;
   this.sCS = sCS;
   this.sCT = sCT;
@@ -30,6 +29,7 @@ function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,restart,sCFi,sCS,sCT
   this.eS = eS;
   this.eT = eT;
   this.eFo = eFo;
+  this.max = max;
 }
 
 // handlePH()
@@ -94,16 +94,18 @@ Board.prototype.handleTemp = function() {
 // updateLevel()
 //
 // Update the points based on the total for each macromolecules
-Board.prototype.updateLevel = function(points,total) {
+Board.prototype.updateLevel = function(totalMacros) {
   if (this.c >= this.level && this.l >= this.level && this.p >= this.level && this.n >= this.level) {
     this.level++;
+    totalMacros = 0;
+    this.max -= this.level;
   }
 }
 
 // display()
 //
 // Draw the board on the screen
-Board.prototype.display = function() {
+Board.prototype.display = function(totalMacros) {
 
   // Design the background of the canvas
   background(255);
@@ -177,10 +179,12 @@ Board.prototype.display = function() {
   fill(0);
   textSize(28);
   text("TEMPERATURE = " + this.temp + " °C", this.x,this.y-280,this.w,this.h);
-  console.log(this.x, this.y);
+
 
   // Add the information about the level
   text("LV: " + this.level,100,height/8);
+  textSize(24);
+  text("\n" + (this.max-totalMacros),100,height/8+15);
 
   // Add the information about the number of macromolecules ingested
   // carbohydrates
@@ -224,8 +228,7 @@ Board.prototype.startGame = function() {
 // resetGame()
 //
 // A function to reset the whole reset the game when lost
-Board.prototype.resetGame = function() {
-  this.restart++;
+Board.prototype.resetGame = function(totalMacros) {
   background(255)
   fill(5,161,105);
   textSize(40);
@@ -234,10 +237,7 @@ Board.prototype.resetGame = function() {
   text("YOU LOST...\n\n...RESTART? (PRESS SPACE)\n",(width/2)-320,height/2-100,800);
 
     if (keyIsDown(32)) {
+      this.level = 0;
       this.temp = 37;
-      if (this.restart >= 3) {
-        this.level = 0;
-        this.restart = 0;
-      }
     }
   }
