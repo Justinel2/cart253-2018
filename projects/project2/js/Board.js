@@ -190,16 +190,16 @@ Board.prototype.display = function(totalMacros) {
   // carbohydrates
   textSize(24);
   fill(255,238,0);
-  text("CARBOHYDRATES -> MONOSACCHARIDES\n" + this.c, this.x,(this.y/8+100)-300,this.w,this.h);
+  text("CARBOHYDRATES -> MONOSACCHARIDES\n" + this.c + " / " + this.level, this.x,(this.y/8+100)-300,this.w,this.h);
   // proteins
   fill(0,255,0);
-  text("PROTEINS -> AMINO ACIDS\n" + this.p, this.x,this.y-75,this.w,this.h);
+  text("PROTEINS -> AMINO ACIDS\n" + this.p + " / " + this.level, this.x,this.y-75,this.w,this.h);
   // lipids
   fill(255,0,0);
-  text("LIPIDS -> GLYCEROL,\n FATTY ACIDS,\n GLYCERIDS\n" + this.l, this.x,this.y/8+25,this.w,this.h);
+  text("LIPIDS -> GLYCEROL,\n FATTY ACIDS,\n GLYCERIDS\n" + this.l + " / " + this.level, this.x,this.y/8+25,this.w,this.h);
   // nuclear acids
   fill(0,0,255);
-  text("NUCLEAR ACIDS ->\nNITROGENOUS BASES,\n SUGARS, PHOSPHATES\n" + this.n, this.x,this.y/8+175,this.w,this.h);
+  text("NUCLEAR ACIDS ->\nNITROGENOUS BASES,\n SUGARS, PHOSPHATES\n" + this.n + " / " + this.level, this.x,this.y/8+175,this.w,this.h);
 }
 
 // startGame()
