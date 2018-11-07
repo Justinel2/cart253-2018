@@ -38,7 +38,7 @@ Ball.prototype.display = function () {
 //
 // Check if this ball overlaps the paddle passed as an argument
 // and if so reverse x velocity to bounce
-Ball.prototype.handleCollision = function(paddle,board) {
+Ball.prototype.handleCollision = function(paddle,board,soundDigestion) {
   // Check if the ball overlaps the paddle on x axis
   if (this.x + this.size > paddle.x && this.x < paddle.x + paddle.w) {
     // Check if the ball overlaps the paddle on y axis
@@ -241,6 +241,11 @@ Ball.prototype.handleCollision = function(paddle,board) {
           // Remove 10 to the body temperature
           board.temp -= 10;
         }
+      }
+      if (this.img === macros[9]) {
+        // Add sound effect
+        soundDigestion.setVolume(0.6);
+        soundDigestion.play();
       }
     }
   }

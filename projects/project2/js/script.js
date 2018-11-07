@@ -161,10 +161,10 @@ function draw() {
       balls[i].update();
 
       // Handle the collision of each macromolecule depending on each paddle
-      balls[i].handleCollision(leftPaddle,board);
-      balls[i].handleCollision(rightPaddle,board);
-      balls[i].handleCollision(topPaddle,board);
-      balls[i].handleCollision(bottomPaddle,board);
+      balls[i].handleCollision(leftPaddle,board,soundDigestion);
+      balls[i].handleCollision(rightPaddle,board,soundDigestion);
+      balls[i].handleCollision(topPaddle,board,soundDigestion);
+      balls[i].handleCollision(bottomPaddle,board,soundDigestion);
 
       // Display each macromolecule
       balls[i].display();
