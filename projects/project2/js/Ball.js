@@ -43,10 +43,6 @@ Ball.prototype.handleCollision = function(paddle,board) {
   if (this.x + this.size > paddle.x && this.x < paddle.x + paddle.w) {
     // Check if the ball overlaps the paddle on y axis
     if (this.y + this.size > paddle.y && this.y < paddle.y + paddle.h) {
-      // // Reverse x velocity to bounce
-      // this.vx = -this.vx;
-      // // Reverse y velocity to bounce
-      // this.vy = -this.vy;
 
       // Check if there has been a contact from a molecule to a paddle,
       // check which paddle it is and, depending on its enzyme,

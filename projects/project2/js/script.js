@@ -1,4 +1,4 @@
-// MACROMOLECULES OF LIFE
+// MACROMOLECULES OF LIFE, 2018
 // By Justine Lardeux 40030920
 // Adapted from Pong
 // by Pippin Barr
@@ -15,6 +15,7 @@
 //
 // This game has been entirely written, designed and illustrated by me. It is based on real
 // biological values and realities.
+// The sound effects are by Igor Dubois, 2018
 //
 // Arrow keys control the different paddles.
 //
@@ -47,6 +48,10 @@ var paddles = [];
 // Array containing the informations about the enzymes
 var enzymes = ["SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE SALIVARY AMYLASE ","PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN PEPSIN","PANCREATIC AMYLASE / CARBOPEPTIDASE / NUCLEASE / LIPASE", "DISACCHARIDASE / DIPEPTIDASE, CARBOXYPEPTIDASE + AMINOPEPTIDASE"];
 
+// The sound effects
+var soundBG;        //background sound
+var soundDigestion; //sound at digestion
+
 // preload()
 //
 // Loads the different media
@@ -73,6 +78,10 @@ function preload() {
   black = loadFont("assets/fonts/WorkSans-Black.ttf");
   extraBold = loadFont("assets/fonts/WorkSans-ExtraBold.ttf");
   bold = loadFont("assets/fonts/WorkSans-Bold.ttf");
+
+  // Preload sounds
+  soundBG = loadSound("assets/sounds/AMB.wav");
+  soundDigestion = loadSound("assets/sounds/IMPACT3.wav");
 }
 
 // setup()
