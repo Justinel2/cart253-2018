@@ -43,10 +43,10 @@ Ball.prototype.handleCollision = function(paddle,board) {
   if (this.x + this.size > paddle.x && this.x < paddle.x + paddle.w) {
     // Check if the ball overlaps the paddle on y axis
     if (this.y + this.size > paddle.y && this.y < paddle.y + paddle.h) {
-      // Reverse x velocity to bounce
-      this.vx = -this.vx;
-      // Reverse y velocity to bounce
-      this.vy = -this.vy;
+      // // Reverse x velocity to bounce
+      // this.vx = -this.vx;
+      // // Reverse y velocity to bounce
+      // this.vy = -this.vy;
 
       // Check if there has been a contact from a molecule to a paddle,
       // check which paddle it is and, depending on its enzyme,
@@ -54,6 +54,8 @@ Ball.prototype.handleCollision = function(paddle,board) {
       //
       // **************If the paddle is the top one
       if (paddle.h === 15 && paddle.y === 40) {
+        // Reverse y velocity to bounce
+        this.vy = -this.vy;
         //If it is a polysaccharide
         if (this.img === macros[0]){
           // Digest the polysaccharide into a disaccharide
@@ -99,6 +101,8 @@ Ball.prototype.handleCollision = function(paddle,board) {
       //
       // **************If the paddle is the bottom one
       else if (paddle.h === 15 && paddle.y === height-54){
+        // Reverse y velocity to bounce
+        this.vy = -this.vy;
         // If the macromolecule is a disaccharide, a lipid, a protein or a nuclear acid, change the icon for transparency
         if (this.img === macros[1]){
           // Digested! - Change the icon for transparency
@@ -158,6 +162,8 @@ Ball.prototype.handleCollision = function(paddle,board) {
       //
       // **************If the paddle is the left one
       else if (paddle.h === 150 && paddle.x === 40) {
+        // Reverse x velocity to bounce
+        this.vx = -this.vx;
         // If the macromolecule is a disaccharide or a protein, change the icon for transparency
         if (this.img === macros[1]){
           // Digested! - Change the icon for transparency
@@ -205,6 +211,8 @@ Ball.prototype.handleCollision = function(paddle,board) {
       //
       // **************If the paddle is the right one
       else {
+        // Reverse x velocity to bounce
+        this.vx = -this.vx;
         // If the macromolecule is a protein, change the icon for transparency
         if (this.img === macros[3]){
           this.img = macros[9];
