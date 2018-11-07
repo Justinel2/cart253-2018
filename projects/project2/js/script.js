@@ -106,6 +106,11 @@ function setup() {
 
   // Create the timer that generates the macromolecules and gifts, the time depends on the level in Board.js
   timer = setInterval(generator, board.interval);
+
+  // Setup the background Sound
+  soundBG.setVolume(0.4);
+  soundBG.play();
+  soundBG.loop(true);
 }
 
 // generator()
