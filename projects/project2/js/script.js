@@ -3,11 +3,20 @@
 // Adapted from Pong
 // by Pippin Barr
 //
-// A primitive implementation of Pong with no scoring system
-// just the ability to play the game with the keyboard.
+// An implementation of the game Pong. The game serves as a primitive simulation of
+// the human organism digestion of the four macromolecules of life: carbohydrates, lipides
+// proteins and nuclear acids. The four paddle represents the different enzymes present in
+// the four main locations of digestion in our body. The success of the player depends not only
+// on bouncing these macromolecules to the right paddle; the player also needs to maintain a basic
+// homeostasis in the virtual body. This will be deranged by different modifiers that alterate the
+// pH of each specific section and the overall body temperature. To succeed a level, the player needs
+// to digest what is required of each macromolecules to live without running out of the constantly randomly
+// generated macromolecules and without disbalancing the body temperature to the extreme.
 //
-// Arrow keys control the right hand paddle, W and S control
-// the left hand paddle.
+// This game has been entirely written, designed and illustrated by me. It is based on real
+// biological values and realities.
+//
+// Arrow keys control the different paddles.
 //
 // Written with JavaScript OOP.
 
