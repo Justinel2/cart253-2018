@@ -81,11 +81,13 @@ Ball.prototype.handleCollision = function(paddle,board) {
         else if (this.img === macros[5]) {
           this.img = macros[9];
           board.phFi++;
+          // board.eFi = 0;
         }
         // If it is a pH - 1
         else if (this.img === macros[6]) {
           this.img = macros[9];
           board.phFi--;
+          board.eFi = 0;
         }
         // If it is a Temp. +10
         else if (this.img === macros[7]) {
@@ -100,12 +102,11 @@ Ball.prototype.handleCollision = function(paddle,board) {
       }
       //
       // **************If the paddle is the bottom one
-      else if (paddle.h === 15 && paddle.y === height-50){
-        // If the macromolecule is a polysaccharide, change the icon for a disaccharide
-        if (this.img === macros[0]){
-          this.img = macros[1];
+      else if (paddle.h === 15 && paddle.y === height-54){
+        // If the macromolecule is a disaccharide, a lipid, a protein or a nuclear acid, change the icon for transparency
+        if (this.img === macros[1]){
+          this.img = macros[9];
         }
-        // If the macromolecule is a lipid, a protein or a nuclear acid, change the icon for transparency
         else if (this.img === macros[2]) {
           this.img = macros[9];
           board.l++;
@@ -122,11 +123,13 @@ Ball.prototype.handleCollision = function(paddle,board) {
         else if (this.img === macros[5]) {
           this.img = macros[9];
           board.phT++;
+          // board.eT = 0;
         }
         // If it is a pH - 1
         else if (this.img === macros[6]) {
           this.img = macros[9];
           board.phT--;
+          board.eT = 0;
         }
         // If it is a Temp. +10
         else if (this.img === macros[7]) {
@@ -155,11 +158,13 @@ Ball.prototype.handleCollision = function(paddle,board) {
         else if (this.img === macros[5]) {
           this.img = macros[9];
           board.phFo++;
+          // board.eFo = 0;
         }
         // If it is a pH - 1
         else if (this.img === macros[6]) {
           this.img = macros[9];
           board.phFo--;
+          board.eFo = 0;
         }
         // If it is a Temp. +10
         else if (this.img === macros[7]) {
@@ -184,11 +189,13 @@ Ball.prototype.handleCollision = function(paddle,board) {
         else if (this.img === macros[5]) {
           this.img = macros[9];
           board.phS++;
+          // board.eS = 0;
         }
         // If it is a pH - 1
         else if (this.img === macros[6]) {
           this.img = macros[9];
           board.phS--;
+          board.eS = 0;
         }
         // If it is a Temp. +10
         else if (this.img === macros[7]) {

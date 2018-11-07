@@ -91,7 +91,7 @@ function setup() {
   topPaddle = new Paddle((width-395.542)/2,40,150,15,10,40,38,37,39,paddles[0]);
   bottomPaddle = new Paddle((width-395.542)/2,height-54,150,15,10,40,38,37,39,paddles[2]);
   // Create the side board
-  board = new Board(width-395.542,0,395.542,height,0,0,0,0,7.0,2.5,7.7,7.7,60,0,0,255,255,255,255);
+  board = new Board(width-395.542,0,395.542,height,0,0,0,0,7.0,2.5,7.7,7.7,60,0,0,255,255,255,255,1,1,1,1);
 }
 
 // generator()

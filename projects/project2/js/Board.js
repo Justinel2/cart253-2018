@@ -6,7 +6,7 @@
 // Board constructor
 //
 // Sets the properties with the provided arguments or defaults
-function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,restart,sCFi,sCS,sCT,sCFo) {
+function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,restart,sCFi,sCS,sCT,sCFo,eFi,eS,eT,eFo) {
   this.x = x;
   this.y = y;
   this.w = w;
@@ -26,6 +26,10 @@ function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,restart,sCFi,sCS,sCT
   this.sCS = sCS;
   this.sCT = sCT;
   this.sCFo = sCFo;
+  this.eFi = eFi;
+  this.eS = eS;
+  this.eT = eT;
+  this.eFo = eFo;
 }
 
 // handlePH()
@@ -34,30 +38,47 @@ function Board(x,y,w,h,c,l,p,n,phFi,phS,phT,phFo,temp,level,restart,sCFi,sCS,sCT
 Board.prototype.handlePH = function(paddle) {
   if (this.phFi <= 6.5 || this.phFi >= 7.5) {
     this.sCFi = 255;
-    if (this.phFi >= 0) {
-      this.c = floor(this.phFi*-1);
-    }
-  }
-  else if (this.phS <= 1.5 || this.phS >= 3.5) {
-    this.sCS = 200;
-    if (this.phS >= 0) {
-      this.l = floor(this.phS*-1);
-    }
-  }
-  else if (this.phT <= 6.7 || this.phT >= 8.7) {
-    this.sCT = 200;
-    if (this.phT >= 0) {
-      this.p = floor(this.phT*-1);
-    }
-  }
-  else if (this.phFo <= 6.7 || this.phFo >= 8.7) {
-    this.sCFo = 200;
-    if (this.phFo >= 0) {
-      this.n = floor(this.phT*-1);
+    if (this.eFi === 0) {
+      this.c--;
+      this.eFi++
     }
   }
   else {
     this.sCFi = 255;
+  }
+  if (this.phS <= 1.5 || this.phS >= 3.5) {
+    this.sCS = 200;
+    if (this.eS === 0) {
+      this.p--;
+      this.eS++
+    }
+  }
+  else {
+    this.sCS = 255;
+  }
+  if (this.phT <= 6.7 || this.phT >= 8.7) {
+    this.sCT = 200;
+    if (this.eT === 0) {
+      this.p--;
+      this.l--;
+      this.n--;
+      this.c--;
+      this.eT++;
+    }
+  }
+  else {
+    this.sCT = 255;
+  }
+  if (this.phFo <= 6.7 || this.phFo >= 8.7) {
+    this.sCFo = 200;
+    if (this.eFo === 0) {
+      this.c--;
+      this.p--;
+      this.eFo++;
+    }
+  }
+  else {
+    this.sCFo = 255;
   }
 }
 
