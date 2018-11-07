@@ -80,7 +80,7 @@ function preload() {
   bold = loadFont("assets/fonts/WorkSans-Bold.ttf");
 
   // Preload sounds
-  soundBG = loadSound("assets/sounds/AMB.wav");
+  soundBG = loadSound("assets/sounds/AMB.mp3");
   soundDigestion = loadSound("assets/sounds/IMPACT3.wav");
 }
 
@@ -108,7 +108,7 @@ function setup() {
   timer = setInterval(generator, board.interval);
 
   // Setup the background Sound
-  soundBG.setVolume(0.4);
+  soundBG.setVolume(0.6);
   soundBG.play();
   soundBG.loop(true);
 }
