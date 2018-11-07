@@ -1,7 +1,8 @@
 // Board
 //
 // A class that defines how a board behaves, including the ability
-// to calculate the points and to display the levels
+// to calculate and to display the informations about the current play,
+// like the level, the amount of macromolecules, the pH of each section and the body temperature
 
 // Board constructor
 //
