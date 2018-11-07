@@ -7,18 +7,18 @@
 //
 // Sets the properties with the provided arguments or defaults
 function Paddle(x,y,w,h,speed,downKey,upKey,leftKey,rightKey,img) {
-  this.x = x;
-  this.y = y;
-  this.vx = 0;
-  this.vy = 0;
-  this.w = w;
-  this.h = h;
-  this.speed = speed;
-  this.downKey = downKey;
-  this.upKey = upKey;
-  this.leftKey = leftKey;
-  this.rightKey = rightKey;
-  this.img = img;
+  this.x = x;               // the x-coordinate of the paddle
+  this.y = y;               // the y-coordinate of the paddle
+  this.vx = 0;              // the velocity on the x-axis of the paddle
+  this.vy = 0;              // the velocity on the y-axis of the paddle
+  this.w = w;               // the width of the paddle
+  this.h = h;               // the height of the paddle
+  this.speed = speed;       // the speed the paddle moves
+  this.downKey = downKey;   // the control key to go down (vertical paddles only)
+  this.upKey = upKey;       // the control key to go up (vertical paddles only)
+  this.leftKey = leftKey;   // the control key to go left (horizontal paddles only)
+  this.rightKey = rightKey; // the control key to go right (horizontal paddles only)
+  this.img = img;           // the image associated to the paddle
 }
 
 // handleInputVertical()
@@ -39,7 +39,7 @@ Paddle.prototype.handleInputVertical = function() {
 
 // handleInputHorizontal()
 //
-// Check if the leftright or right keys are pressed and update velocity
+// Check if the left or right keys are pressed and update velocity
 // appropriately
 Paddle.prototype.handleInputHorizontal = function() {
   if (keyIsDown(this.leftKey)) {
@@ -67,7 +67,7 @@ Paddle.prototype.update = function() {
 
 // display()
 //
-// Draw the paddle as a rectangle on the screen
+// Draw the paddle with the image on the screen
 Paddle.prototype.display = function() {
   image(this.img,this.x,this.y,this.w,this.h);
 }
