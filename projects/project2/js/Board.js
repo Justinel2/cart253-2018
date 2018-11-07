@@ -85,16 +85,16 @@ Board.prototype.handlePH = function(paddle) {
 // handleTemp()
 //
 // Updates the consequences due to the fluctuation of the body temperature
-Board.prototype.display = function() {
+Board.prototype.handleTemp = function() {
   if (this.t < 0 || this.t > 60) {
     this.restart++;
   }
 }
 
-// updateLevels()
+// updateLevel()
 //
 // Update the points based on the total for each macromolecules
-Board.prototype.updateLevels = function(points,total) {
+Board.prototype.updateLevel = function(points,total) {
   if (this.c >= this.level && this.l >= this.level && this.p >= this.level && this.n >= this.level) {
     this.level++;
   }
@@ -203,6 +203,7 @@ Board.prototype.display = function() {
 // A function to prompt the user to start the game (with instructions)
 Board.prototype.startGame = function() {
     this.level = 0;
+    this.restart = 0;
     background(255)
     fill(5,161,105);
     textSize(40);
@@ -218,24 +219,25 @@ Board.prototype.startGame = function() {
     }
 }
 
+
+
 // resetGame()
 //
 // A function to reset the whole reset the game when lost
 Board.prototype.resetGame = function() {
-  this.level = 1;
+  this.restart++;
   background(255)
   fill(5,161,105);
   textSize(40);
   textFont(black);
   textAlign(CENTER,CENTER);
-  text("YOU LOST...\n\n",(width/2)-320,50,800);
-  if (this.restart >= 3) {
-    startGame();
-  }
-  else {
-    text("...RESTART? (PRESS SPACE)",(width/2)-320,200,800)
+  text("YOU LOST...\n\n...RESTART? (PRESS SPACE)\n",(width/2)-320,height/2-100,800);
+
     if (keyIsDown(32)) {
-      this.level = 1;
+      this.temp = 37;
+      if (this.restart >= 3) {
+        this.level = 0;
+        this.restart = 0;
+      }
     }
   }
-}

@@ -109,7 +109,7 @@ function generator() {
 // and displays everything.
 function draw() {
 
-  if (board.level <= 0) {
+  if (board.level === 0) {
     board.startGame();
   }
   else {
@@ -137,11 +137,18 @@ function draw() {
       balls[i].display();
     }
 
+    board.updateLevel();
+
     board.handlePH();
+    // board.handleTemp();
 
     leftPaddle.display();
     rightPaddle.display();
     topPaddle.display();
     bottomPaddle.display();
+
+    if (board.temp < 0 || board.temp > 60) {
+      board.resetGame();
+    }
   }
 }

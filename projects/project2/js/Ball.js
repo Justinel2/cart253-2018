@@ -106,6 +106,7 @@ Ball.prototype.handleCollision = function(paddle,board) {
         // If the macromolecule is a disaccharide, a lipid, a protein or a nuclear acid, change the icon for transparency
         if (this.img === macros[1]){
           this.img = macros[9];
+          board.c++;
         }
         else if (this.img === macros[2]) {
           this.img = macros[9];
