@@ -54,4 +54,9 @@ Line.prototype.display = function() {
   for (var i = 0; i < 200; i++) {
     line(0,pow(i,1.8)+100,width,pow(i,1.8)+100);
   }
+
+  // Create a rectangle that masks the vertical lines passed the horizon line
+  noStroke();
+  fill(0);
+  rect(0,0,width,100);
 }
