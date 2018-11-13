@@ -17,8 +17,12 @@ function Line(x,y) {
 Line.prototype.display = function() {
   // Attribute the color white to the stroke of the lines
   stroke(255)
-  // Create the lines on the x-coordinate
-  for (i = 0; i <= height; i += height/12) {
-    line(0,i,width,i);
+  // Create the lines on the x-coordinate (the distance in meters)
+  for (var i = 0; i < 200; i++) {
+    line(0,pow(i,1.8)+100,width,pow(i,1.8)+100);
   }
+  // // Create the lines on the y-coordinate (the angles from north)
+  // for (var i = 0; i < 200; i++) {
+  //   line(width/2,0,(width/2)-pow(i,1.8),height);
+  // }
 }
