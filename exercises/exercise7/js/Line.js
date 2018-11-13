@@ -1,19 +1,14 @@
-// Ball
+// Line
 //
-// A class to define how a ball behaves. Including bouncing on the top
-// and bottom edges of the canvas, going off the left and right sides,
-// and bouncing off paddles.
+// A class to define how the lines of the interactive map behave.
+//
 
-// Ball constructor
+// Line constructor
 //
 // Sets the properties with the provided arguments
-function Ball(x,y,vx,vy,size,speed) {
+function Ball(x,y) {
   this.x = x;
   this.y = y;
-  this.vx = vx;
-  this.vy = vy;
-  this.size = size;
-  this.speed = speed;
 }
 
 // update()
