@@ -16,7 +16,7 @@ var lines;
 function setup() {
   createCanvas(900,575);
 
-  lines = new Line(0,0);
+  lines = new Line(0,0,0,0);
 }
 
 // draw()
