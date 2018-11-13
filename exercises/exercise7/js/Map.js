@@ -1,24 +1,20 @@
-// Line
+// Map
 //
-// A class to define how the lines of the interactive map behave.
+// A class to define how the interactive map behaves.
 //
 
 // Line constructor
 //
 // Sets the properties with the provided arguments
-function Line(x1,y1,x2,y2) {
-  this.x1 = x1;
-  this.y1 = y1;
-  this.x2 = x2;
-  this.y2 = y2;
-  // this.angle = angle;
-  // this.angleIncrease = angleIncrease;
+function Map(x,y,angle,angleIncrease) {
+  this.x = x;
+  this.y = y;
 }
 
 // display()
 //
 // Display the horizontal and vertical lines depending on the screen
-Line.prototype.display = function() {
+Map.prototype.display = function() {
 
   // Attribute the color white to the stroke of the lines
   stroke(255);
