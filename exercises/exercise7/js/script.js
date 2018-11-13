@@ -8,13 +8,15 @@
 // Written with JavaScript OOP.
 
 // Variable to contain the objects representing our ball and paddles
-var line;
+var lines;
 
 // setup()
 //
 // Creates the ball and paddles
 function setup() {
   createCanvas(900,575);
+
+  lines = new Line(0,0);
 }
 
 // draw()
@@ -24,6 +26,6 @@ function setup() {
 function draw() {
   background(0);
 
-  displayLines();
+  lines.display();
 
 }
