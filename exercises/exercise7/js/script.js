@@ -8,7 +8,7 @@
 // Written with JavaScript OOP.
 
 // Variable to contain the objects representing our ball and paddles
-var map;
+var area;
 
 // setup()
 //
@@ -16,7 +16,7 @@ var map;
 function setup() {
   createCanvas(900,575);
 
-  map = new Map(0,0);
+  area = new Area(0,0);
 }
 
 // draw()
@@ -26,6 +26,7 @@ function setup() {
 function draw() {
   background(0);
 
-  map.display();
+  area.display();
+  
 
 }
