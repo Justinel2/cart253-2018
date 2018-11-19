@@ -12,7 +12,6 @@ function Area(x,y) {
 }
 
 
-
 // display()
 //
 // Display the horizontal and vertical lines depending on the screen
