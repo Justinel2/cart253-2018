@@ -12,19 +12,6 @@ function Area(x,y,size,color) {
   this.color = color;
 }
 
-Area.prototype.trace = function() {
-  var traceHistory = [];
-  var v = createVector(mouseX,mouseY);
-  traceHistory.push(v);
-
-  for (var i = 0; i < traceHistory.length; i++) {
-    var pos = traceHistory[i];
-    fill('#00ff00');
-    noStroke();
-    ellipse(pos.x,pos.y,10,10);
-  }
-}
-
 // displayArea()
 //
 // Display the horizontal and vertical lines depending on the screen
@@ -70,17 +57,6 @@ Area.prototype.display = function(hiveX,hiveY) {
   fill(0);
   rect(0,0,width,100);
 
-  // // Create middle lines that places the origin point (the hive) on the map
-  // // Attributing the color blue to the middle lines
-  // stroke(0,0,255);
-  // //Vertical middle line
-  // line(width/2-100,0,width/2-100,height);
-  // //Horizontal middle line
-  // line(0,height/2,width,height/2);
-  //=======
-
-
-  //=======
   // Display the coordonate according to the area (in meters)
   // The coordonates should follow the mouse as it hover the map
   // Calculate the simulations coordonates (honey bees usually stay within a 3200m or perimeter of the hive)
