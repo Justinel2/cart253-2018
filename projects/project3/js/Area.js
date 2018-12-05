@@ -49,3 +49,8 @@ Area.prototype.display = function(hiveX,hiveY) {
     angle += angleIncrease;
     angleIncrease += 0.001;
   }
+
+  // Create and display the lines on the x-coordinate (the distance in meters)
+  for (var i = 0; i < 200; i++) {
+    line(0,pow(i,1.8)+100,width-200,pow(i,1.8)+100);
+  }
