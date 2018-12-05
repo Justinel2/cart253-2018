@@ -83,10 +83,10 @@ function setup() {
 // Each new location will generate randomly a new paragraph
 function mousePressed() {
   l = new Area(mouseX,mouseY,10,255);
-  // push the location of the mouse when clicked as a location in the array
+  // Push the location of the mouse when clicked as a location in the array
   areaLocations.push(l);
-  // // generate a paragraph of 5 sentences
-  // lines = markov.generateSentences(5);
+  // Generate a paragraph of 5 sentences according to our markov model
+  lines = markov.generateSentences(5);
 }
 
 // draw()
