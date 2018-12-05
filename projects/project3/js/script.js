@@ -86,6 +86,12 @@ function setup() {
  // load text data into the model
  markov.loadText(loveData.join(' '));
  markov.loadText(beesData.join(' '));
+
+// Generate bees as objects according to the Bee.js class and depending on 
+// the number of bees established in the variable definition
+ for (var i = 0; i < numBees; i++) {
+    bees.push(new Bee(random(0,width),random(0,height),random(-2,2),random(-2,2),100,2,beeImage));
+  }
 }
 
 // mousePressed()
