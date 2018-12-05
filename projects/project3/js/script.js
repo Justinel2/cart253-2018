@@ -20,6 +20,9 @@ var colorLocations = 0;
 // using the geolocation Library
 var locationData;
 
+// Variable containing the textbox object
+var textbox;
+
 // preload()
 //
 // Load the different medias and data
