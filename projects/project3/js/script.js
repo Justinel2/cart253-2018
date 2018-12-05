@@ -18,7 +18,7 @@
 // a collection of love letters on the internet and the wikipedia page of the
 // honey bees. (library -> rita.js)
 //
-// The bees are drawn by me on illustrator. 
+// The bees are drawn by me on illustrator.
 //
 // Written with JavaScript OOP.
 
@@ -57,7 +57,6 @@ var bees = [];
 var numBees = 15;
 // Variable containing the image of the bee
 var beeImage;
-
 
 // preload()
 //
