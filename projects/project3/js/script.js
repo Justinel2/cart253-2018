@@ -27,7 +27,7 @@ var locationData;
 var textbox;
 // Variable containing the lines of text
 var lines;
-// Variable containing the markov formula used with the data
+// Variable containing the markov model used with the data
 var markov;
 
 // preload()
@@ -55,7 +55,17 @@ function setup() {
   // Represents a black rectangle that is used to clean up the area that
   // is used by the text on the right side of the screen
   textbox = new Textbox(900,0,300,height);
-}
+
+  // Definition of the default text when the screen has not been clicked yet
+  lines = ["Click on the map to create new connections."];
+
+//  // create a markov model w' n=4
+//   markov = new RiMarkov(4);
+//
+//  // load text into the model
+//  markov.loadText(loveData.join(' '));
+//  markov.loadText(beesData.join(' '));
+// }
 
 // mousePressed()
 //
