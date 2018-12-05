@@ -90,9 +90,9 @@ function draw() {
   for (var i = 0; i < bees.length; i++) {
     push();
     rotate(random(-1,1));
-    bees[i].updateBee();
+    bees[i].update();
     bees[i].handleWrapping();
-    bees[i].displayBee();
+    bees[i].display();
     pop();
   }
   drawText();

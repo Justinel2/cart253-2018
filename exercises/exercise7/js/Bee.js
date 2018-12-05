@@ -16,7 +16,7 @@ function Bee(x,y,vx,vy,size,speed,img) {
   this.img = img;
 }
 
-Bee.prototype.updateBee = function() {
+Bee.prototype.update = function() {
   this.x += this.vx;
   this.y += this.vy;
 }
@@ -38,7 +38,7 @@ Bee.prototype.handleWrapping = function() {
   }
 }
 
-Bee.prototype.displayBee = function() {
+Bee.prototype.display = function() {
   imageMode(CENTER);
   image(this.img,this.x,this.y,this.size,this.size);
 }
