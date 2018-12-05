@@ -20,10 +20,20 @@ var colorLocations = 0;
 // using the geolocation Library
 var locationData;
 
+// preload()
+//
 // Load the different medias and data
 function preload() {
   // Load and attribute the position (lat,long)
   // of the user to the locationData variable
   locationData =  getCurrentPosition();
+
+//setup()
+//
+//
+function setup() {
+  
+}
+
 
 }
