@@ -38,9 +38,13 @@ var beesData;
 //
 // Load the different medias and data
 function preload() {
-  // Load and attribute the position (lat,long)
+  // Preload and attribute the position (lat,long)
   // of the user to the locationData variable
   locationData =  getCurrentPosition();
+
+  // Preload the text data of the text files
+  loveData = loadStrings('assets/texts/loves.txt');
+  beesData = loadStrings('assets/texts/bees.txt');
 }
 
 //setup()
