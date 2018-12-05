@@ -36,5 +36,10 @@ function setup() {
   createCanvas(1200,575);
 }
 
-
+// draw()
+//
+// create background, displays the objects and text, update the
+// location of the bees and the marcov-generated text
+function draw() {
+  
 }
