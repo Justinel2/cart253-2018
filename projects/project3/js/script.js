@@ -52,7 +52,7 @@ function mousePressed() {
   l = new Area(mouseX,mouseY,10,255);
   // push the location of the mouse when clicked as a location in the array
   areaLocations.push(l);
-  // // generate a paragraph of 5 sentences 
+  // // generate a paragraph of 5 sentences
   // lines = markov.generateSentences(5);
 }
 
@@ -63,6 +63,12 @@ function mousePressed() {
 function draw() {
   // Background color -> black
   background(0);
+
+  // Display each location clicked by the user as a white dot with a
+  // link to the local/hive (red dot)
+  for (let i = 0; i < areaLocations.length; i++) {
+    areaLocations[i].display(areaHive.x,areaHive.y);
+  }
   // Display the local/hive area according to the display() function
   // in Area.js
   areaHive.display();
