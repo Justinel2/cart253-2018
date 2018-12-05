@@ -34,6 +34,16 @@ var loveData;
 // Variable containing the text data of the honey bees on wikipedia
 var beesData;
 
+// BEES
+// -------------------------------------------------------
+// Array containing the bees on the screen
+var bees = [];
+// Variable containing the number of bees that will be generated
+var numBees = 15;
+// Variable containing the image of the bee
+var beeImage;
+
+
 // preload()
 //
 // Load the different medias and data
