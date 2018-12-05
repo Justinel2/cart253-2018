@@ -79,4 +79,7 @@ function draw() {
   // Display the local/hive area according to the display() function
   // in Area.js
   areaHive.display();
+  // Display the textbox that is used as a background for the text according
+  // to the display() function in Textbox.js
+  textbox.display();
 }
