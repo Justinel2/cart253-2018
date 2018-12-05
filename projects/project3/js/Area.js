@@ -54,3 +54,14 @@ Area.prototype.display = function(hiveX,hiveY) {
   for (var i = 0; i < 200; i++) {
     line(0,pow(i,1.8)+100,width-200,pow(i,1.8)+100);
   }
+  
+  // Display the coordonate according to the area (in meters)
+  // The coordonates should follow the mouse as it hover the map
+  // Calculate the simulations coordonates (honey bees usually stay within a 3200m or perimeter of the hive)
+  var areaX = nf(map(mouseX,0,width-300,-180,180),0,0);
+  var areaY = nf(map(mouseY,100,height,90,-90),0,0);
+  textSize(16);
+  fill(255,0,0)
+  text(areaX + "," + areaY, mouseX + 10, mouseY + 10);
+
+}
