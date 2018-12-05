@@ -2,32 +2,45 @@
 //
 // A class to define how the interactive Area behaves.
 //
-
-// Line constructor
+// Area constructor
 //
 // Sets the properties with the provided arguments
-function Area(x,y) {
+function Area(x,y,size,color) {
   this.x = x;
   this.y = y;
+  this.size = size;
+  this.color = color;
 }
 
+Area.prototype.trace = function() {
+  var traceHistory = [];
+  var v = createVector(mouseX,mouseY);
+  traceHistory.push(v);
 
-// display()
+  for (var i = 0; i < traceHistory.length; i++) {
+    var pos = traceHistory[i];
+    fill('#00ff00');
+    noStroke();
+    ellipse(pos.x,pos.y,10,10);
+  }
+}
+
+// displayArea()
 //
 // Display the horizontal and vertical lines depending on the screen
-Area.prototype.display = function() {
+Area.prototype.display = function(hiveX,hiveY) {
 
+  // Create and display the vertical lines (the angle according to the sun)
   // Attribute the color white to the stroke of the lines
   stroke(255);
 
-  // Create and display the vertical lines (the angle according to the sun)
   // Vertical lines on the left side of the screen
   var angle = 3.3*PI/4;
   var angleIncrease = 0.01;
 
   for (var i = 0; i < 58; i++) {
     push();
-    translate(width/2,-145);
+    translate(width/2-80,-315);
     var x = 1000 * cos(angle);
     var y = 1000 * sin(angle);
     line(0,0,x,y);
@@ -38,7 +51,7 @@ Area.prototype.display = function() {
   // Vertical lines on the right side of the screen
   for (var i = 0; i < 58; i++) {
     push();
-    translate(width/2,-145);
+    translate(width/2-80,-315);
     var x = 1000 * cos(angle);
     var y = 1000 * sin(angle);
     line(0,0,x,y);
@@ -49,7 +62,7 @@ Area.prototype.display = function() {
 
   // Create and display the lines on the x-coordinate (the distance in meters)
   for (var i = 0; i < 200; i++) {
-    line(0,pow(i,1.8)+100,width,pow(i,1.8)+100);
+    line(0,pow(i,1.8)+100,width-200,pow(i,1.8)+100);
   }
 
   // Display a rectangle that masks the vertical lines passed the horizon line
@@ -57,13 +70,35 @@ Area.prototype.display = function() {
   fill(0);
   rect(0,0,width,100);
 
+  // // Create middle lines that places the origin point (the hive) on the map
+  // // Attributing the color blue to the middle lines
+  // stroke(0,0,255);
+  // //Vertical middle line
+  // line(width/2-100,0,width/2-100,height);
+  // //Horizontal middle line
+  // line(0,height/2,width,height/2);
+  //=======
+
+
+  //=======
   // Display the coordonate according to the area (in meters)
   // The coordonates should follow the mouse as it hover the map
   // Calculate the simulations coordonates (honey bees usually stay within a 3200m or perimeter of the hive)
-  var areaX = nf(map(mouseX,0,width,-3200,3200),0,0);
-  var areaY = nf(map(mouseY,100,height,3200,-3200),0,0);
+  var areaX = nf(map(mouseX,0,width-300,-180,180),0,0);
+  var areaY = nf(map(mouseY,100,height,90,-90),0,0);
   textSize(16);
   fill(255,0,0)
   text(areaX + "," + areaY, mouseX + 10, mouseY + 10);
+
+
+  // display the locations
+  fill(this.color);
+  noStroke();
+  ellipse(this.x,this.y,this.size,this.size);
+
+  if (this.x != hiveX || this.y != hiveY) {
+    stroke(255);
+    line(hiveX,hiveY,this.x,this.y);
+  }
 
 }

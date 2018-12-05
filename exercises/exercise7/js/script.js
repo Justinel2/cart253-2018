@@ -8,15 +8,76 @@
 // Written with JavaScript OOP.
 
 // Variable to contain the objects representing our ball and paddles
-var area;
+var areaHive;
+var colorHive = "#ff0000";
+var areaLocations = [];
+
+var textbox;
+
+var bees = [];
+var numBees = 15;
+var beeImage;
+
+var locationData;
+
+var loveData;
+var beesData;
+
+var lines;
+var markov;
+
+
+// Loads the different media
+function preload() {
+
+  beeImage = loadImage('assets/images/P3_bee_cart253.png');
+
+  loveData = loadStrings('assets/texts/loves.txt');
+  beesData = loadStrings('assets/texts/bees.txt');
+
+  locationData =  getCurrentPosition();
+}
 
 // setup()
 //
 // Creates the ball and paddles
 function setup() {
-  createCanvas(900,575);
+  createCanvas(1200,575);
 
-  area = new Area(0,0);
+  if(geoCheck() == true){
+    //geolocation is available
+    console.log("trueeeee");
+  }else{
+    //error getting geolocaion
+    console.log("no trueeeee");
+  }
+
+  areaHive = new Area(map(locationData.longitude,-180,180,0,width-300),map(locationData.latitude,90,-90,100,height),20,colorHive);
+
+  console.log(locationData.longitude,locationData.latitude);
+
+  textbox = new Textbox(900,0,300,height);
+
+  for (var i = 0; i < numBees; i++) {
+    bees.push(new Bee(random(0,width),random(0,height),random(-2,2),random(-2,2),100,2,beeImage));
+  }
+
+  lines = ["click to (re)generate!"];
+
+ // create a markov model w' n=4
+  markov = new RiMarkov(4);
+
+ // load text into the model
+ markov.loadText(loveData.join(' '));
+ markov.loadText(beesData.join(' '));
+
+}
+
+function mousePressed() {
+  l = new Area(mouseX,mouseY,10,255);
+  areaLocations.push(l);
+  lines = markov.generateSentences(5);
+  drawText();
 }
 
 // draw()
@@ -26,7 +87,27 @@ function setup() {
 function draw() {
   background(0);
 
-  area.display();
+  for (let i = 0; i < areaLocations.length; i++) {
+    areaLocations[i].display(areaHive.x,areaHive.y);
+  }
   
+  areaHive.display();
 
+  textbox.display();
+
+  for (var i = 0; i < bees.length; i++) {
+    push();
+    rotate(random(-1,1));
+    bees[i].updateBee();
+    bees[i].handleWrapping();
+    bees[i].displayBee();
+    pop();
+  }
+  drawText();
+}
+
+function drawText() {
+  fill(255);
+  noStroke();
+  text(lines.join(' '), 950, 100, 200, 400);
 }
