@@ -30,6 +30,7 @@ function preload() {
   // Load and attribute the position (lat,long)
   // of the user to the locationData variable
   locationData =  getCurrentPosition();
+}
 
 //setup()
 //
