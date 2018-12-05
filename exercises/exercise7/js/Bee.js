@@ -21,12 +21,6 @@ Bee.prototype.updateBee = function() {
   this.y += this.vy;
 }
 
-Bee.prototype.jiggling = function(x,y) {
-  // Jiggling randomly on the vertical and horizontal axis
-  this.x += random(-1, 1);
-  this.y += random(-1, 1);
-}
-
 // Wrap when player goes off the canvas
 Bee.prototype.handleWrapping = function() {
   if (this.x < 0) {
