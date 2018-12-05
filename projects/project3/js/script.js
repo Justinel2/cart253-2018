@@ -34,6 +34,9 @@ function preload() {
 function setup() {
   // create the canvas where the program will display
   createCanvas(1200,575);
+  // Create a new object from the constructor in Area.js
+  areaHive = new Area(map(locationData.longitude,-180,180,0,width-300),map(locationData.latitude,90,-90,100,height),20,colorHive);
+
 }
 
 // draw()
@@ -41,5 +44,5 @@ function setup() {
 // create background, displays the objects and text, update the
 // location of the bees and the marcov-generated text
 function draw() {
-  
+
 }
