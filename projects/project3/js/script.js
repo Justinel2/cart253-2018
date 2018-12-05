@@ -105,7 +105,7 @@ function mousePressed() {
   // Push the location of the mouse when clicked as a location in the array
   areaLocations.push(l);
   // Generate a paragraph of 5 sentences according to our markov model
-  lines = markov.generateSentences(5);
+  lines = markov.generateSentences(4);
 }
 
 // draw()
@@ -137,7 +137,7 @@ function draw() {
   for (var i = 0; i < bees.length; i++) {
     // Put in memory the canvas properties
     push();
-    // Rotate randomly the canvas between -1 and 1 
+    // Rotate randomly the canvas between -1 and 1
     rotate(random(-1,1));
     // Update the bee position according to the update() function in Bee.js
     bees[i].update();
