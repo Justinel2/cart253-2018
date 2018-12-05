@@ -59,9 +59,9 @@ function setup() {
   // Definition of the default text when the screen has not been clicked yet
   lines = ["Click on the map to create new connections."];
 
-//  // create a markov model w' n=4
-//   markov = new RiMarkov(4);
-//
+ // create a markov model w' n=2
+  markov = new RiMarkov(2);
+
 //  // load text into the model
 //  markov.loadText(loveData.join(' '));
 //  markov.loadText(beesData.join(' '));

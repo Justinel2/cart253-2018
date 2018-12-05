@@ -57,7 +57,7 @@ function setup() {
   lines = ["click to (re)generate!"];
 
  // create a markov model w' n=4
-  markov = new RiMarkov(4);
+  markov = new RiMarkov(2);
 
  // load text into the model
  markov.loadText(loveData.join(' '));
