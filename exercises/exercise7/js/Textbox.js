@@ -1,4 +1,4 @@
-// Location
+// Textbox.js
 //
 // A class to define how the interactive Area behaves.
 //

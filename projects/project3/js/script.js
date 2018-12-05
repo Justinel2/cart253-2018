@@ -7,7 +7,8 @@
 //
 // Written with JavaScript OOP.
 
-
+// GRID AND LOCATIONS
+// -------------------------------------------------------
 // Variable to contain the local/hive object
 var areaHive;
 // Variable to contain the user-generated locations in an array
@@ -20,8 +21,14 @@ var colorLocations = 0;
 // using the geolocation Library
 var locationData;
 
+// TEXTBOX
+// -------------------------------------------------------
 // Variable containing the textbox object
 var textbox;
+// Variable containing the lines of text
+var lines;
+// Variable containing the markov formula used with the data
+var markov;
 
 // preload()
 //
