@@ -1,4 +1,4 @@
-// Exercise 7 - Project 3, Prototype 1 -> Interactive map
+// Project 3, AN ODE TO YOU, MY HONEY BEE
 // by Justine Lardeux
 //
 //
@@ -78,7 +78,7 @@ function setup() {
   textbox = new Textbox(900,0,300,height);
 
   // Definition of the default text when the screen has not been clicked yet
-  lines = ["Click on the map to create new connections."];
+  lines = ["AN ODE TO YOU, MY HONEY BEE.\n\nClick on the map to create new connections."];
 
  // create a markov model w' n=2
   markov = new RiMarkov(2);
