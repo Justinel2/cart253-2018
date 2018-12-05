@@ -70,10 +70,10 @@ function setup() {
  // create a markov model w' n=2
   markov = new RiMarkov(2);
 
-//  // load text into the model
-//  markov.loadText(loveData.join(' '));
-//  markov.loadText(beesData.join(' '));
-// }
+ // load text data into the model
+ markov.loadText(loveData.join(' '));
+ markov.loadText(beesData.join(' '));
+}
 
 // mousePressed()
 //
