@@ -108,6 +108,10 @@ function draw() {
   // Display the textbox that is used as a background for the text according
   // to the display() function in Textbox.js
   textbox.display();
+
+  // Display the text generated according to the markov model
+  // From the Rita library
+  displayText();
 }
 
 // displayText()
