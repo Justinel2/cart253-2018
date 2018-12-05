@@ -32,7 +32,8 @@ function preload() {
 //
 //
 function setup() {
-  
+  // create the canvas where the program will display
+  createCanvas(1200,575);
 }
 
 
