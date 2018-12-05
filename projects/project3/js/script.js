@@ -87,7 +87,7 @@ function setup() {
  markov.loadText(loveData.join(' '));
  markov.loadText(beesData.join(' '));
 
-// Generate bees as objects according to the Bee.js class and depending on 
+// Generate bees as objects according to the Bee.js class and depending on
 // the number of bees established in the variable definition
  for (var i = 0; i < numBees; i++) {
     bees.push(new Bee(random(0,width),random(0,height),random(-2,2),random(-2,2),100,2,beeImage));
@@ -131,6 +131,24 @@ function draw() {
   // Display the text generated according to the markov model
   // From the Rita library
   displayText();
+
+  // Display each bee of the array and rotate them so they look like
+  // they are moving really fast/psychedelic
+  for (var i = 0; i < bees.length; i++) {
+    // Put in memory the canvas properties
+    push();
+    // Rotate randomly the canvas between -1 and 1 
+    rotate(random(-1,1));
+    // Update the bee position according to the update() function in Bee.js
+    bees[i].update();
+    // Handle the position when the bee is off canvas
+    // according to the handleWrapping() function in Bee.js
+    bees[i].handleWrapping();
+    // Display the bee according to the display() function in Bee.js
+    bees[i].display();
+    // Put back the canvas properties
+    pop();
+  }
 }
 
 // displayText()
