@@ -1,9 +1,24 @@
 // Project 3, AN ODE TO YOU, MY HONEY BEE
 // by Justine Lardeux
 //
+// A program that is mainly inspired by how bees communicate throught the
+// waggle dance. This dance helps communicating locations where there is
+// nectar. Even today, scientists are not aware of all of the informations this
+// dance communicate.
 //
+// The program identifies your location. It will then place you, the hive,
+// on the map. The map is a grid made of latitude and longitude. Your hive is
+// the big red ellipse. (library -> geolocation.js)
 //
+// The user is then encouraged to create link by clicking on the map. This will
+// create white ellipses that represent new locations. At each new discovery,
+// a text will appear on the right side of the canvas.
 //
+// The text is randomly generated with the markov chain. The database used is
+// a collection of love letters on the internet and the wikipedia page of the
+// honey bees. (library -> rita.js)
+//
+// The bees are drawn by me on illustrator. 
 //
 // Written with JavaScript OOP.
 
