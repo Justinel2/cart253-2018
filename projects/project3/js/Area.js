@@ -71,5 +71,9 @@ Area.prototype.display = function(hiveX,hiveY) {
   noStroke();
   ellipse(this.x,this.y,this.size,this.size);
 
-
+  // display a line joining the local (hive) to each new user-generated location
+  if (this.x != hiveX || this.y != hiveY) {
+    stroke(255);
+    line(hiveX,hiveY,this.x,this.y);
+  }
 }
