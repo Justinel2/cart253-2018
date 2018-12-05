@@ -37,12 +37,16 @@ function preload() {
 function setup() {
   // create the canvas where the program will display
   createCanvas(1200,575);
-  // Create a new object from the constructor in Area.js
+  // Defition of a new object from the constructor in Area.js
   // Represents a 20px of diameter red ellipse for the local/hive location
   // Takes the previously acquired position of the user and puts it
   // 'a l'echelle' on the Area/map
   areaHive = new Area(map(locationData.longitude,-180,180,0,width-300),map(locationData.latitude,90,-90,100,height),20,colorHive);
 
+  // Definition of a new object from the construction in Textbox.js
+  // Represents a black rectangle that is used to clean up the area that
+  // is used by the text on the right side of the screen
+  textbox = new Textbox(900,0,300,height);
 }
 
 // mousePressed()
