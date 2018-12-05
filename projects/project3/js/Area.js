@@ -14,7 +14,7 @@ function Area(x,y,size,color) {
 }
 
 
-// displayArea()
+// display()
 //
 // Display the horizontal and vertical lines depending on the screen so
 // it represents, as a perspective grid, the latitude and longitude.

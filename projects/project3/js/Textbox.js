@@ -13,3 +13,13 @@ function Textbox(x,y,w,h) {
   this.w = w;
   this.h = h;
 }
+
+// display()
+//
+// Display the black rectangle that will be used as the section
+// for the generated text
+Textbox.prototype.display = function() {
+  fill(0);
+  stroke(255);
+  rect(this.x,this.y,this.w,this.h);
+}
