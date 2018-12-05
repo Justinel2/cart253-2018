@@ -30,7 +30,7 @@ function preload() {
 
 //setup()
 //
-//
+// A function to setup the objects before drawing the program
 function setup() {
   // create the canvas where the program will display
   createCanvas(1200,575);
@@ -40,6 +40,20 @@ function setup() {
   // 'a l'echelle' on the Area/map
   areaHive = new Area(map(locationData.longitude,-180,180,0,width-300),map(locationData.latitude,90,-90,100,height),20,colorHive);
 
+}
+
+// mousePressed()
+//
+// A function that is activated by the user clicking on the map
+// The user click on the map to add a new location (white dots)that is going to be
+// linked to the local/hive one (red dot)
+// Each new location will generate randomly a new paragraph
+function mousePressed() {
+  l = new Area(mouseX,mouseY,10,255);
+  // push the location of the mouse when clicked as a location in the array
+  areaLocations.push(l);
+  // // generate a paragraph of 5 sentences 
+  // lines = markov.generateSentences(5);
 }
 
 // draw()

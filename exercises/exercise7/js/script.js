@@ -44,17 +44,9 @@ function preload() {
 function setup() {
   createCanvas(1200,575);
 
-  if(geoCheck() == true){
-    //geolocation is available
-    console.log("trueeeee");
-  }else{
-    //error getting geolocaion
-    console.log("no trueeeee");
-  }
 
   areaHive = new Area(map(locationData.longitude,-180,180,0,width-300),map(locationData.latitude,90,-90,100,height),20,colorHive);
 
-  console.log(locationData.longitude,locationData.latitude);
 
   textbox = new Textbox(900,0,300,height);
 
@@ -77,7 +69,7 @@ function mousePressed() {
   l = new Area(mouseX,mouseY,10,255);
   areaLocations.push(l);
   lines = markov.generateSentences(5);
-  drawText();
+  // drawText();
 }
 
 // draw()
@@ -90,7 +82,7 @@ function draw() {
   for (let i = 0; i < areaLocations.length; i++) {
     areaLocations[i].display(areaHive.x,areaHive.y);
   }
-  
+
   areaHive.display();
 
   textbox.display();
