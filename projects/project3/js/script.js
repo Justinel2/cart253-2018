@@ -29,6 +29,10 @@ var textbox;
 var lines;
 // Variable containing the markov model used with the data
 var markov;
+// Variable containing the text data of the online love letters
+var loveData;
+// Variable containing the text data of the honey bees on wikipedia
+var beesData;
 
 // preload()
 //
