@@ -55,6 +55,9 @@ function preload() {
   // Preload the text data of the text files
   loveData = loadStrings('assets/texts/loves.txt');
   beesData = loadStrings('assets/texts/bees.txt');
+
+  // Preload the image for the bees
+  beeImage = loadImage('assets/images/P3_bee_cart253.png');
 }
 
 //setup()
