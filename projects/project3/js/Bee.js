@@ -16,6 +16,14 @@ function Bee(x,y,vx,vy,size,speed,img) {
   this.img = img;
 }
 
+// update()
+//
+// Add the x and y velocity so the bee move through the canvas at each frame
+Bee.prototype.update = function() {
+  this.x += this.vx;
+  this.y += this.vy;
+}
+
 // handleWrapping()
 //
 // Wrap when bee goes off the canvas
