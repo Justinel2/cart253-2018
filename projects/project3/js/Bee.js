@@ -49,3 +49,12 @@ Bee.prototype.handleWrapping = function() {
     this.y -= height;
   }
 }
+
+// display()
+//
+// Display bee with the bee image preloaded in script.js and put the mode to
+// center
+Bee.prototype.display = function() {
+  imageMode(CENTER);
+  image(this.img,this.x,this.y,this.size,this.size);
+}
