@@ -44,5 +44,6 @@ function setup() {
 // create background, displays the objects and text, update the
 // location of the bees and the marcov-generated text
 function draw() {
-
+  // Background color -> black
+  background(0);
 }
