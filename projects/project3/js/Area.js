@@ -55,6 +55,11 @@ Area.prototype.display = function(hiveX,hiveY) {
     line(0,pow(i,1.8)+100,width-200,pow(i,1.8)+100);
   }
 
+  // Display a rectangle that masks the vertical lines passed the horizon line
+  noStroke();
+  fill(0);
+  rect(0,0,width,100);
+
   // Display the coordonate according to the area (in meters)
   // The coordonates should follow the mouse as it hover the map
   // Calculate the simulations coordonates (honey bees usually stay within a 3200m or perimeter of the hive)
