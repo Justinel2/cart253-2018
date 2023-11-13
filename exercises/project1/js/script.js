@@ -78,7 +78,7 @@ function preload() {
   proto = loadImage('assets/images/P1_proto.png');
   bacteria = loadImage('assets/images/P1_bacteria.png');
 
-  ambiance = loadSound("assets/sounds/ambiance.mp3");
+  ambiance = loadSound("assets/sounds/ambiance.wav");
   gobage = loadSound("assets/sounds/gobage.mp3");
 }
 
